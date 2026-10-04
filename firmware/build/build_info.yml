@@ -1,0 +1,53 @@
+cmake:
+  application:
+    configuration-dir: /home/shrutika/zephyrproject/ZephyrAir/firmware
+    source-dir: /home/shrutika/zephyrproject/ZephyrAir/firmware
+  board:
+    name: native_sim
+    path:
+     - /home/shrutika/zephyrproject/zephyr/boards/native/native_sim
+    qualifiers: native/64
+    revision: 
+  devicetree:
+    bindings-dirs:
+     - /home/shrutika/zephyrproject/zephyr/dts/bindings
+    files:
+     - /home/shrutika/zephyrproject/zephyr/boards/native/native_sim/native_sim_64.dts
+    include-dirs:
+     - /home/shrutika/zephyrproject/modules/hal/atmel/include
+     - /home/shrutika/zephyrproject/modules/hal/gigadevice/include
+     - /home/shrutika/zephyrproject/modules/hal/microchip/include
+     - /home/shrutika/zephyrproject/modules/hal/microchip/dts
+     - /home/shrutika/zephyrproject/modules/hal/nuvoton/dts
+     - /home/shrutika/zephyrproject/modules/hal/nxp/dts
+     - /home/shrutika/zephyrproject/modules/hal/stm32/dts
+     - /home/shrutika/zephyrproject/zephyr/include
+     - /home/shrutika/zephyrproject/zephyr/include/zephyr
+     - /home/shrutika/zephyrproject/zephyr/dts/common
+     - /home/shrutika/zephyrproject/zephyr/dts/x86
+     - /home/shrutika/zephyrproject/zephyr/dts/xtensa
+     - /home/shrutika/zephyrproject/zephyr/dts/sparc
+     - /home/shrutika/zephyrproject/zephyr/dts/riscv
+     - /home/shrutika/zephyrproject/zephyr/dts/posix
+     - /home/shrutika/zephyrproject/zephyr/dts/nios2
+     - /home/shrutika/zephyrproject/zephyr/dts/arm64
+     - /home/shrutika/zephyrproject/zephyr/dts/arm
+     - /home/shrutika/zephyrproject/zephyr/dts/arc
+     - /home/shrutika/zephyrproject/zephyr/dts
+  kconfig:
+    files:
+     - /home/shrutika/zephyrproject/zephyr/boards/native/native_sim/native_sim_64_defconfig
+     - /home/shrutika/zephyrproject/ZephyrAir/firmware/prj.conf
+    user-files:
+     - /home/shrutika/zephyrproject/ZephyrAir/firmware/prj.conf
+  toolchain:
+    name: host
+    path: 
+  zephyr:
+    version: 4.1.0
+    zephyr-base: /home/shrutika/zephyrproject/zephyr
+version: 0.1.0
+west:
+  command: /home/shrutika/zephyrproject/.venv/bin/west build -b native_sim/native/64
+  topdir: /home/shrutika/zephyrproject
+  version: 1.5.0
