@@ -1,6 +1,11 @@
 #include <zephyr/kernel.h>
 #include <zephyr/sys/printk.h>
 #include <math.h>
+#include <zephyr/drivers/i2c.h>
+
+/* Get Devicetree specification for BMP390 */
+#define BMP390_NODE DT_NODELABEL(bmp390)
+static const struct i2c_dt_spec bmp390_dev = I2C_DT_SPEC_GET(BMP390_NODE);
 
 /* ====================================================================
  * Data Structures & Message Queues
@@ -40,6 +45,33 @@ void sensor_thread_entry(void *arg1, void *arg2, void *arg3)
     ARG_UNUSED(arg3);
 
     printk("[Sensor Thread] Started\n");
+
+     /* =================================================================
+     * I2C Hardware Handshake with Bosch BMP390
+     * ================================================================= */
+    printk("[Sensor Thread] Checking I2C bus for BMP390...\n");
+    if (!i2c_is_ready_dt(&bmp390_dev)) {
+        printk("[Sensor Thread] ERROR: I2C bus controller not ready!\n");
+        return;
+    }
+    uint8_t chip_id_reg = 0x00; // BMP390 CHIP_ID register address
+    uint8_t chip_id_val = 0;    // Buffer to hold response
+    /* Perform the 2-step I2C read dance */
+    int ret = i2c_write_read_dt(&bmp390_dev, &chip_id_reg, 1, &chip_id_val, 1);
+    if (ret != 0) {
+        printk("[Sensor Thread] ERROR: I2C read failed with code %d\n", ret);
+        return;
+    }
+    if (chip_id_val == 0x60) {
+        printk("\n**************************************************************\n");
+        printk(">>> [BMP390] HANDSHAKE SUCCESS!                               <<<\n");
+        printk(">>> Found Bosch BMP390 at I2C 0x%02X | Chip ID verified: 0x%02X <<<\n",
+               bmp390_dev.addr, chip_id_val);
+        printk("**************************************************************\n\n");
+    } else {
+        printk("[Sensor Thread] ERROR: Unexpected Chip ID 0x%02X (Expected 0x60)\n", chip_id_val);
+        return;
+    }
 
     uint32_t sample_idx = 0;
 

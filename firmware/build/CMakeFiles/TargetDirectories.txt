@@ -125,6 +125,11 @@
 /home/shrutika/zephyrproject/ZephyrAir/firmware/build/zephyr/subsys/tracing/CMakeFiles/rebuild_cache.dir
 /home/shrutika/zephyrproject/ZephyrAir/firmware/build/zephyr/subsys/usb/CMakeFiles/edit_cache.dir
 /home/shrutika/zephyrproject/ZephyrAir/firmware/build/zephyr/subsys/usb/CMakeFiles/rebuild_cache.dir
+/home/shrutika/zephyrproject/ZephyrAir/firmware/build/zephyr/subsys/emul/CMakeFiles/subsys__emul.dir
+/home/shrutika/zephyrproject/ZephyrAir/firmware/build/zephyr/subsys/emul/CMakeFiles/edit_cache.dir
+/home/shrutika/zephyrproject/ZephyrAir/firmware/build/zephyr/subsys/emul/CMakeFiles/rebuild_cache.dir
+/home/shrutika/zephyrproject/ZephyrAir/firmware/build/zephyr/subsys/emul/espi/CMakeFiles/edit_cache.dir
+/home/shrutika/zephyrproject/ZephyrAir/firmware/build/zephyr/subsys/emul/espi/CMakeFiles/rebuild_cache.dir
 /home/shrutika/zephyrproject/ZephyrAir/firmware/build/zephyr/drivers/CMakeFiles/edit_cache.dir
 /home/shrutika/zephyrproject/ZephyrAir/firmware/build/zephyr/drivers/CMakeFiles/rebuild_cache.dir
 /home/shrutika/zephyrproject/ZephyrAir/firmware/build/zephyr/drivers/disk/CMakeFiles/edit_cache.dir
@@ -149,6 +154,9 @@
 /home/shrutika/zephyrproject/ZephyrAir/firmware/build/zephyr/drivers/console/CMakeFiles/drivers__console.dir
 /home/shrutika/zephyrproject/ZephyrAir/firmware/build/zephyr/drivers/console/CMakeFiles/edit_cache.dir
 /home/shrutika/zephyrproject/ZephyrAir/firmware/build/zephyr/drivers/console/CMakeFiles/rebuild_cache.dir
+/home/shrutika/zephyrproject/ZephyrAir/firmware/build/zephyr/drivers/i2c/CMakeFiles/drivers__i2c.dir
+/home/shrutika/zephyrproject/ZephyrAir/firmware/build/zephyr/drivers/i2c/CMakeFiles/edit_cache.dir
+/home/shrutika/zephyrproject/ZephyrAir/firmware/build/zephyr/drivers/i2c/CMakeFiles/rebuild_cache.dir
 /home/shrutika/zephyrproject/ZephyrAir/firmware/build/zephyr/drivers/timer/CMakeFiles/drivers__timer.dir
 /home/shrutika/zephyrproject/ZephyrAir/firmware/build/zephyr/drivers/timer/CMakeFiles/edit_cache.dir
 /home/shrutika/zephyrproject/ZephyrAir/firmware/build/zephyr/drivers/timer/CMakeFiles/rebuild_cache.dir

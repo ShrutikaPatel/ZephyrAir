@@ -13,6 +13,7 @@ cmake:
      - /home/shrutika/zephyrproject/zephyr/dts/bindings
     files:
      - /home/shrutika/zephyrproject/zephyr/boards/native/native_sim/native_sim_64.dts
+     - /home/shrutika/zephyrproject/ZephyrAir/firmware/boards/native_sim_native_64.overlay
     include-dirs:
      - /home/shrutika/zephyrproject/modules/hal/atmel/include
      - /home/shrutika/zephyrproject/modules/hal/gigadevice/include
@@ -34,6 +35,8 @@ cmake:
      - /home/shrutika/zephyrproject/zephyr/dts/arm
      - /home/shrutika/zephyrproject/zephyr/dts/arc
      - /home/shrutika/zephyrproject/zephyr/dts
+    user-files:
+     - /home/shrutika/zephyrproject/ZephyrAir/firmware/boards/native_sim_native_64.overlay
   kconfig:
     files:
      - /home/shrutika/zephyrproject/zephyr/boards/native/native_sim/native_sim_64_defconfig
@@ -48,6 +51,6 @@ cmake:
     zephyr-base: /home/shrutika/zephyrproject/zephyr
 version: 0.1.0
 west:
-  command: /home/shrutika/zephyrproject/.venv/bin/west build -b native_sim/native/64
+  command: /home/shrutika/zephyrproject/.venv/bin/west build -p always -b native_sim/native/64
   topdir: /home/shrutika/zephyrproject
   version: 1.5.0

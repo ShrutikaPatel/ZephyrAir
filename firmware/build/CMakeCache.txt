@@ -310,7 +310,7 @@ DTC:FILEPATH=/home/shrutika/zephyr-sdk-0.17.0/sysroots/x86_64-pokysdk-linux/usr/
 // parameter. These settings will override the settings in the
 // board's .dts file. Multiple files may be listed, e.g. DTC_OVERLAY_FILE="dts1.overlay
 // dts2.overlay"
-DTC_OVERLAY_FILE:STRING=
+DTC_OVERLAY_FILE:STRING=/home/shrutika/zephyrproject/ZephyrAir/firmware/boards/native_sim_native_64.overlay
 
 //Path to a program.
 GNULD_LINKER:FILEPATH=/usr/bin/ld.bfd
@@ -526,7 +526,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=126
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=129
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP
@@ -589,6 +589,4 @@ _Python3_EXECUTABLE:INTERNAL=/home/shrutika/zephyrproject/.venv/bin/python3
 //Python3 Properties
 _Python3_INTERPRETER_PROPERTIES:INTERNAL=Python;3;10;12;64;;cpython-310-x86_64-linux-gnu;/usr/lib/python3.10;/usr/lib/python3.10;/home/shrutika/zephyrproject/.venv/lib/python3.10/site-packages;/home/shrutika/zephyrproject/.venv/lib/python3.10/site-packages
 _Python3_INTERPRETER_SIGNATURE:INTERNAL=66acf1e79152dc1392f85ba7e0c7f0ea
-//Test check_fmacro_prefix_map__home_shrutika_zephyrproject_ZephyrAir_firmware_CMAKE_SOURCE_DIR_C__fuse_ld_bfd
-check_fmacro_prefix_map__home_shrutika_zephyrproject_ZephyrAir_firmware_CMAKE_SOURCE_DIR_C__fuse_ld_bfd:INTERNAL=1
 

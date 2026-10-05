@@ -4,6 +4,10 @@
 		(K_SYSCALL_OBJ(ptr, K_OBJ_DRIVER_##driver_upper_case) || \
 		 K_SYSCALL_DRIVER_OP(ptr, driver_lower_case##_driver_api, op))
                 
+#define K_SYSCALL_DRIVER_I2C(ptr, op) K_SYSCALL_DRIVER_GEN(ptr, op, i2c, I2C)
+
+#define K_SYSCALL_DRIVER_I2C_TARGET(ptr, op) K_SYSCALL_DRIVER_GEN(ptr, op, i2c_target, I2C_TARGET)
+
 #define K_SYSCALL_DRIVER_SHARED_IRQ(ptr, op) K_SYSCALL_DRIVER_GEN(ptr, op, shared_irq, SHARED_IRQ)
 
 #define K_SYSCALL_DRIVER_CRYPTO(ptr, op) K_SYSCALL_DRIVER_GEN(ptr, op, crypto, CRYPTO)
@@ -67,10 +71,6 @@
 #define K_SYSCALL_DRIVER_HAPTICS(ptr, op) K_SYSCALL_DRIVER_GEN(ptr, op, haptics, HAPTICS)
 
 #define K_SYSCALL_DRIVER_HWSPINLOCK(ptr, op) K_SYSCALL_DRIVER_GEN(ptr, op, hwspinlock, HWSPINLOCK)
-
-#define K_SYSCALL_DRIVER_I2C(ptr, op) K_SYSCALL_DRIVER_GEN(ptr, op, i2c, I2C)
-
-#define K_SYSCALL_DRIVER_I2C_TARGET(ptr, op) K_SYSCALL_DRIVER_GEN(ptr, op, i2c_target, I2C_TARGET)
 
 #define K_SYSCALL_DRIVER_I2S(ptr, op) K_SYSCALL_DRIVER_GEN(ptr, op, i2s, I2S)
 

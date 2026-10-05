@@ -19,30 +19,31 @@
  *   8   /dma
  *   9   /eeprom
  *   10  /espi@300
- *   11  /i2c@100
- *   12  /input-sdl-touch
- *   13  /lvgl_pointer
- *   14  /mspi@400
- *   15  /rng
- *   16  /rtc
- *   17  /sdl_dc
- *   18  /spi@200
- *   19  /uart
- *   20  /uart_1
- *   21  /udc0
- *   22  /cpus
- *   23  /cpus/cpu@0
- *   24  /flash-controller@0
- *   25  /flash-controller@0/flash@0
- *   26  /flash-controller@0/flash@0/partitions
- *   27  /flash-controller@0/flash@0/partitions/partition@0
- *   28  /flash-controller@0/flash@0/partitions/partition@c000
- *   29  /flash-controller@0/flash@0/partitions/partition@75000
- *   30  /flash-controller@0/flash@0/partitions/partition@de000
- *   31  /flash-controller@0/flash@0/partitions/partition@fc000
- *   32  /gpio_emul
- *   33  /leds
- *   34  /leds/led_0
+ *   11  /input-sdl-touch
+ *   12  /lvgl_pointer
+ *   13  /mspi@400
+ *   14  /rng
+ *   15  /rtc
+ *   16  /sdl_dc
+ *   17  /spi@200
+ *   18  /uart
+ *   19  /uart_1
+ *   20  /udc0
+ *   21  /cpus
+ *   22  /cpus/cpu@0
+ *   23  /flash-controller@0
+ *   24  /flash-controller@0/flash@0
+ *   25  /flash-controller@0/flash@0/partitions
+ *   26  /flash-controller@0/flash@0/partitions/partition@0
+ *   27  /flash-controller@0/flash@0/partitions/partition@c000
+ *   28  /flash-controller@0/flash@0/partitions/partition@75000
+ *   29  /flash-controller@0/flash@0/partitions/partition@de000
+ *   30  /flash-controller@0/flash@0/partitions/partition@fc000
+ *   31  /i2c@100
+ *   32  /i2c@100/bmp390@76
+ *   33  /gpio_emul
+ *   34  /leds
+ *   35  /leds/led_0
  *
  * Definitions derived from these nodes in dependency order are next,
  * followed by /chosen nodes.
@@ -106,21 +107,21 @@
 	8, /* /dma */ \
 	9, /* /eeprom */ \
 	10, /* /espi@300 */ \
-	11, /* /i2c@100 */ \
-	12, /* /input-sdl-touch */ \
-	13, /* /lvgl_pointer */ \
-	14, /* /mspi@400 */ \
-	15, /* /rng */ \
-	16, /* /rtc */ \
-	17, /* /sdl_dc */ \
-	18, /* /spi@200 */ \
-	19, /* /uart */ \
-	20, /* /uart_1 */ \
-	21, /* /udc0 */ \
-	22, /* /cpus */ \
-	24, /* /flash-controller@0 */ \
-	32, /* /gpio_emul */ \
-	33, /* /leds */
+	11, /* /input-sdl-touch */ \
+	12, /* /lvgl_pointer */ \
+	13, /* /mspi@400 */ \
+	14, /* /rng */ \
+	15, /* /rtc */ \
+	16, /* /sdl_dc */ \
+	17, /* /spi@200 */ \
+	18, /* /uart */ \
+	19, /* /uart_1 */ \
+	20, /* /udc0 */ \
+	21, /* /cpus */ \
+	23, /* /flash-controller@0 */ \
+	31, /* /i2c@100 */ \
+	33, /* /gpio_emul */ \
+	34, /* /leds */
 
 /* Existence and alternate IDs: */
 #define DT_N_EXISTS 1
@@ -1259,138 +1260,6 @@
 #define DT_N_S_espi_300_P_zephyr_pm_device_runtime_auto_EXISTS 1
 
 /*
- * Devicetree node: /i2c@100
- *
- * Node identifier: DT_N_S_i2c_100
- *
- * Binding (compatible = zephyr,i2c-emul-controller):
- *   $ZEPHYR_BASE/dts/bindings/i2c/zephyr,i2c-emul-controller.yaml
- *
- * (Descriptions have moved to the Devicetree Bindings Index
- * in the documentation.)
- */
-
-/* Node's full path: */
-#define DT_N_S_i2c_100_PATH "/i2c@100"
-
-/* Node's name with unit-address: */
-#define DT_N_S_i2c_100_FULL_NAME "i2c@100"
-#define DT_N_S_i2c_100_FULL_NAME_UNQUOTED i2c@100
-#define DT_N_S_i2c_100_FULL_NAME_TOKEN i2c_100
-#define DT_N_S_i2c_100_FULL_NAME_UPPER_TOKEN I2C_100
-
-/* Node parent (/) identifier: */
-#define DT_N_S_i2c_100_PARENT DT_N
-
-/* Node's index in its parent's list of children: */
-#define DT_N_S_i2c_100_CHILD_IDX 7
-
-/* Helpers for dealing with node labels: */
-#define DT_N_S_i2c_100_NODELABEL_NUM 1
-#define DT_N_S_i2c_100_FOREACH_NODELABEL(fn) fn(i2c0)
-#define DT_N_S_i2c_100_FOREACH_NODELABEL_VARGS(fn, ...) fn(i2c0, __VA_ARGS__)
-#define DT_N_S_i2c_100_FOREACH_ANCESTOR(fn) fn(DT_N)
-
-/* Helper macros for child nodes of this node. */
-#define DT_N_S_i2c_100_CHILD_NUM 0
-#define DT_N_S_i2c_100_CHILD_NUM_STATUS_OKAY 0
-#define DT_N_S_i2c_100_FOREACH_CHILD(fn) 
-#define DT_N_S_i2c_100_FOREACH_CHILD_SEP(fn, sep) 
-#define DT_N_S_i2c_100_FOREACH_CHILD_VARGS(fn, ...) 
-#define DT_N_S_i2c_100_FOREACH_CHILD_SEP_VARGS(fn, sep, ...) 
-#define DT_N_S_i2c_100_FOREACH_CHILD_STATUS_OKAY(fn) 
-#define DT_N_S_i2c_100_FOREACH_CHILD_STATUS_OKAY_SEP(fn, sep) 
-#define DT_N_S_i2c_100_FOREACH_CHILD_STATUS_OKAY_VARGS(fn, ...) 
-#define DT_N_S_i2c_100_FOREACH_CHILD_STATUS_OKAY_SEP_VARGS(fn, sep, ...) 
-
-/* Node's hash: */
-#define DT_N_S_i2c_100_HASH IUr7tk9i2MSudHINC9CW1jA70R4h9xgedOgqhYMOHo4
-
-/* Node's dependency ordinal: */
-#define DT_N_S_i2c_100_ORD 11
-#define DT_N_S_i2c_100_ORD_STR_SORTABLE 00011
-
-/* Ordinals for what this node depends on directly: */
-#define DT_N_S_i2c_100_REQUIRES_ORDS \
-	0, /* / */
-
-/* Ordinals for what depends directly on this node: */
-#define DT_N_S_i2c_100_SUPPORTS_ORDS /* nothing */
-
-/* Existence and alternate IDs: */
-#define DT_N_S_i2c_100_EXISTS 1
-#define DT_N_ALIAS_i2c_0                       DT_N_S_i2c_100
-#define DT_N_INST_0_zephyr_i2c_emul_controller DT_N_S_i2c_100
-#define DT_N_NODELABEL_i2c0                    DT_N_S_i2c_100
-
-/* Macros for properties that are special in the specification: */
-#define DT_N_S_i2c_100_REG_NUM 1
-#define DT_N_S_i2c_100_REG_IDX_0_EXISTS 1
-#define DT_N_S_i2c_100_REG_IDX_0_VAL_ADDRESS 256 /* 0x100 */
-#define DT_N_S_i2c_100_REG_IDX_0_VAL_SIZE 4 /* 0x4 */
-#define DT_N_S_i2c_100_RANGES_NUM 0
-#define DT_N_S_i2c_100_FOREACH_RANGE(fn) 
-#define DT_N_S_i2c_100_IRQ_NUM 0
-#define DT_N_S_i2c_100_IRQ_LEVEL 0
-#define DT_N_S_i2c_100_COMPAT_MATCHES_zephyr_i2c_emul_controller 1
-#define DT_N_S_i2c_100_COMPAT_VENDOR_IDX_0_EXISTS 1
-#define DT_N_S_i2c_100_COMPAT_VENDOR_IDX_0 "Zephyr-specific binding"
-#define DT_N_S_i2c_100_COMPAT_MODEL_IDX_0_EXISTS 1
-#define DT_N_S_i2c_100_COMPAT_MODEL_IDX_0 "i2c-emul-controller"
-#define DT_N_S_i2c_100_STATUS_okay 1
-
-/* Pin control (pinctrl-<i>, pinctrl-names) properties: */
-#define DT_N_S_i2c_100_PINCTRL_NUM 0
-
-/* Generic property macros: */
-#define DT_N_S_i2c_100_P_reg {256 /* 0x100 */, 4 /* 0x4 */}
-#define DT_N_S_i2c_100_P_reg_IDX_0_EXISTS 1
-#define DT_N_S_i2c_100_P_reg_IDX_0 256
-#define DT_N_S_i2c_100_P_reg_IDX_1_EXISTS 1
-#define DT_N_S_i2c_100_P_reg_IDX_1 4
-#define DT_N_S_i2c_100_P_reg_EXISTS 1
-#define DT_N_S_i2c_100_P_target_buffered_mode 0
-#define DT_N_S_i2c_100_P_target_buffered_mode_EXISTS 1
-#define DT_N_S_i2c_100_P_clock_frequency 100000
-#define DT_N_S_i2c_100_P_clock_frequency_EXISTS 1
-#define DT_N_S_i2c_100_P_sq_size 4
-#define DT_N_S_i2c_100_P_sq_size_EXISTS 1
-#define DT_N_S_i2c_100_P_cq_size 4
-#define DT_N_S_i2c_100_P_cq_size_EXISTS 1
-#define DT_N_S_i2c_100_P_status "okay"
-#define DT_N_S_i2c_100_P_status_STRING_UNQUOTED okay
-#define DT_N_S_i2c_100_P_status_STRING_TOKEN okay
-#define DT_N_S_i2c_100_P_status_STRING_UPPER_TOKEN OKAY
-#define DT_N_S_i2c_100_P_status_IDX_0 "okay"
-#define DT_N_S_i2c_100_P_status_IDX_0_EXISTS 1
-#define DT_N_S_i2c_100_P_status_IDX_0_ENUM_IDX 1
-#define DT_N_S_i2c_100_P_status_IDX_0_ENUM_VAL_okay_EXISTS 1
-#define DT_N_S_i2c_100_P_status_FOREACH_PROP_ELEM(fn) fn(DT_N_S_i2c_100, status, 0)
-#define DT_N_S_i2c_100_P_status_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_i2c_100, status, 0)
-#define DT_N_S_i2c_100_P_status_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_i2c_100, status, 0, __VA_ARGS__)
-#define DT_N_S_i2c_100_P_status_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_i2c_100, status, 0, __VA_ARGS__)
-#define DT_N_S_i2c_100_P_status_LEN 1
-#define DT_N_S_i2c_100_P_status_EXISTS 1
-#define DT_N_S_i2c_100_P_compatible {"zephyr,i2c-emul-controller"}
-#define DT_N_S_i2c_100_P_compatible_IDX_0_EXISTS 1
-#define DT_N_S_i2c_100_P_compatible_IDX_0 "zephyr,i2c-emul-controller"
-#define DT_N_S_i2c_100_P_compatible_IDX_0_STRING_UNQUOTED zephyr,i2c-emul-controller
-#define DT_N_S_i2c_100_P_compatible_IDX_0_STRING_TOKEN zephyr_i2c_emul_controller
-#define DT_N_S_i2c_100_P_compatible_IDX_0_STRING_UPPER_TOKEN ZEPHYR_I2C_EMUL_CONTROLLER
-#define DT_N_S_i2c_100_P_compatible_FOREACH_PROP_ELEM(fn) fn(DT_N_S_i2c_100, compatible, 0)
-#define DT_N_S_i2c_100_P_compatible_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_i2c_100, compatible, 0)
-#define DT_N_S_i2c_100_P_compatible_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_i2c_100, compatible, 0, __VA_ARGS__)
-#define DT_N_S_i2c_100_P_compatible_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_i2c_100, compatible, 0, __VA_ARGS__)
-#define DT_N_S_i2c_100_P_compatible_LEN 1
-#define DT_N_S_i2c_100_P_compatible_EXISTS 1
-#define DT_N_S_i2c_100_P_zephyr_deferred_init 0
-#define DT_N_S_i2c_100_P_zephyr_deferred_init_EXISTS 1
-#define DT_N_S_i2c_100_P_wakeup_source 0
-#define DT_N_S_i2c_100_P_wakeup_source_EXISTS 1
-#define DT_N_S_i2c_100_P_zephyr_pm_device_runtime_auto 0
-#define DT_N_S_i2c_100_P_zephyr_pm_device_runtime_auto_EXISTS 1
-
-/*
  * Devicetree node: /input-sdl-touch
  *
  * Node identifier: DT_N_S_input_sdl_touch
@@ -1439,8 +1308,8 @@
 #define DT_N_S_input_sdl_touch_HASH _nvsFK4s5oBjfgiDaANYPZZHt6iXMXwspkqosGOiTJE
 
 /* Node's dependency ordinal: */
-#define DT_N_S_input_sdl_touch_ORD 12
-#define DT_N_S_input_sdl_touch_ORD_STR_SORTABLE 00012
+#define DT_N_S_input_sdl_touch_ORD 11
+#define DT_N_S_input_sdl_touch_ORD_STR_SORTABLE 00011
 
 /* Ordinals for what this node depends on directly: */
 #define DT_N_S_input_sdl_touch_REQUIRES_ORDS \
@@ -1448,7 +1317,7 @@
 
 /* Ordinals for what depends directly on this node: */
 #define DT_N_S_input_sdl_touch_SUPPORTS_ORDS \
-	13, /* /lvgl_pointer */
+	12, /* /lvgl_pointer */
 
 /* Existence and alternate IDs: */
 #define DT_N_S_input_sdl_touch_EXISTS 1
@@ -1534,13 +1403,13 @@
 #define DT_N_S_lvgl_pointer_HASH 9oAfOZodC_aqxbBUiGPA779FZbyhILEYrqO3oMLRpXQ
 
 /* Node's dependency ordinal: */
-#define DT_N_S_lvgl_pointer_ORD 13
-#define DT_N_S_lvgl_pointer_ORD_STR_SORTABLE 00013
+#define DT_N_S_lvgl_pointer_ORD 12
+#define DT_N_S_lvgl_pointer_ORD_STR_SORTABLE 00012
 
 /* Ordinals for what this node depends on directly: */
 #define DT_N_S_lvgl_pointer_REQUIRES_ORDS \
 	0, /* / */ \
-	12, /* /input-sdl-touch */
+	11, /* /input-sdl-touch */
 
 /* Ordinals for what depends directly on this node: */
 #define DT_N_S_lvgl_pointer_SUPPORTS_ORDS /* nothing */
@@ -1632,8 +1501,8 @@
 #define DT_N_S_mspi_400_HASH fuiTOVVzDSrwiYQSA_tLHR5BsqjajV10brTiUr_fdkI
 
 /* Node's dependency ordinal: */
-#define DT_N_S_mspi_400_ORD 14
-#define DT_N_S_mspi_400_ORD_STR_SORTABLE 00014
+#define DT_N_S_mspi_400_ORD 13
+#define DT_N_S_mspi_400_ORD_STR_SORTABLE 00013
 
 /* Ordinals for what this node depends on directly: */
 #define DT_N_S_mspi_400_REQUIRES_ORDS \
@@ -1761,8 +1630,8 @@
 #define DT_N_S_rng_HASH 98B3z51tVswT8a2jWb4DEShjnbOfff_2ZJ2IkICfJU4
 
 /* Node's dependency ordinal: */
-#define DT_N_S_rng_ORD 15
-#define DT_N_S_rng_ORD_STR_SORTABLE 00015
+#define DT_N_S_rng_ORD 14
+#define DT_N_S_rng_ORD_STR_SORTABLE 00014
 
 /* Ordinals for what this node depends on directly: */
 #define DT_N_S_rng_REQUIRES_ORDS \
@@ -1875,8 +1744,8 @@
 #define DT_N_S_rtc_HASH gbiy3mxGIPmJnwxT5DKIQVYIT0FjfYpMVqZoval9JQs
 
 /* Node's dependency ordinal: */
-#define DT_N_S_rtc_ORD 16
-#define DT_N_S_rtc_ORD_STR_SORTABLE 00016
+#define DT_N_S_rtc_ORD 15
+#define DT_N_S_rtc_ORD_STR_SORTABLE 00015
 
 /* Ordinals for what this node depends on directly: */
 #define DT_N_S_rtc_REQUIRES_ORDS \
@@ -1992,8 +1861,8 @@
 #define DT_N_S_sdl_dc_HASH nVMcd4K51plEJiF7Tgm8FDUu_teWgHwP6CZkH2gwz1M
 
 /* Node's dependency ordinal: */
-#define DT_N_S_sdl_dc_ORD 17
-#define DT_N_S_sdl_dc_ORD_STR_SORTABLE 00017
+#define DT_N_S_sdl_dc_ORD 16
+#define DT_N_S_sdl_dc_ORD_STR_SORTABLE 00016
 
 /* Ordinals for what this node depends on directly: */
 #define DT_N_S_sdl_dc_REQUIRES_ORDS \
@@ -2096,8 +1965,8 @@
 #define DT_N_S_spi_200_HASH v0wMMgjm8leDCjCRDhi90BkUxoGcT1qj6op_J1CxZSM
 
 /* Node's dependency ordinal: */
-#define DT_N_S_spi_200_ORD 18
-#define DT_N_S_spi_200_ORD_STR_SORTABLE 00018
+#define DT_N_S_spi_200_ORD 17
+#define DT_N_S_spi_200_ORD_STR_SORTABLE 00017
 
 /* Ordinals for what this node depends on directly: */
 #define DT_N_S_spi_200_REQUIRES_ORDS \
@@ -2222,8 +2091,8 @@
 #define DT_N_S_uart_HASH w3cI8VQhZLzLoD7j_iVCBB202hxQnIxy_rrgNXjlQWw
 
 /* Node's dependency ordinal: */
-#define DT_N_S_uart_ORD 19
-#define DT_N_S_uart_ORD_STR_SORTABLE 00019
+#define DT_N_S_uart_ORD 18
+#define DT_N_S_uart_ORD_STR_SORTABLE 00018
 
 /* Ordinals for what this node depends on directly: */
 #define DT_N_S_uart_REQUIRES_ORDS \
@@ -2354,8 +2223,8 @@
 #define DT_N_S_uart_1_HASH ABhtuqfrWz7Lh12Wcsd4kRxQcCY7p_JKe4culqz5et4
 
 /* Node's dependency ordinal: */
-#define DT_N_S_uart_1_ORD 20
-#define DT_N_S_uart_1_ORD_STR_SORTABLE 00020
+#define DT_N_S_uart_1_ORD 19
+#define DT_N_S_uart_1_ORD_STR_SORTABLE 00019
 
 /* Ordinals for what this node depends on directly: */
 #define DT_N_S_uart_1_REQUIRES_ORDS \
@@ -2486,8 +2355,8 @@
 #define DT_N_S_udc0_HASH q6pZw0znoDouiz_J12UwbEn5_8_dwUP4E_fjcejFOnc
 
 /* Node's dependency ordinal: */
-#define DT_N_S_udc0_ORD 21
-#define DT_N_S_udc0_ORD_STR_SORTABLE 00021
+#define DT_N_S_udc0_ORD 20
+#define DT_N_S_udc0_ORD_STR_SORTABLE 00020
 
 /* Ordinals for what this node depends on directly: */
 #define DT_N_S_udc0_REQUIRES_ORDS \
@@ -2580,8 +2449,8 @@
 #define DT_N_S_cpus_HASH iL3XRGZVvvtpNJqKV0_jvtuXF7m6kgky4nI2ifizwdg
 
 /* Node's dependency ordinal: */
-#define DT_N_S_cpus_ORD 22
-#define DT_N_S_cpus_ORD_STR_SORTABLE 00022
+#define DT_N_S_cpus_ORD 21
+#define DT_N_S_cpus_ORD_STR_SORTABLE 00021
 
 /* Ordinals for what this node depends on directly: */
 #define DT_N_S_cpus_REQUIRES_ORDS \
@@ -2589,7 +2458,7 @@
 
 /* Ordinals for what depends directly on this node: */
 #define DT_N_S_cpus_SUPPORTS_ORDS \
-	23, /* /cpus/cpu@0 */
+	22, /* /cpus/cpu@0 */
 
 /* Existence and alternate IDs: */
 #define DT_N_S_cpus_EXISTS 1
@@ -2656,12 +2525,12 @@
 #define DT_N_S_cpus_S_cpu_0_HASH Su0JBbOtM0QIxe_1ka2Xvgw4rk1QaIlMIj8Rp_v4yVQ
 
 /* Node's dependency ordinal: */
-#define DT_N_S_cpus_S_cpu_0_ORD 23
-#define DT_N_S_cpus_S_cpu_0_ORD_STR_SORTABLE 00023
+#define DT_N_S_cpus_S_cpu_0_ORD 22
+#define DT_N_S_cpus_S_cpu_0_ORD_STR_SORTABLE 00022
 
 /* Ordinals for what this node depends on directly: */
 #define DT_N_S_cpus_S_cpu_0_REQUIRES_ORDS \
-	22, /* /cpus */
+	21, /* /cpus */
 
 /* Ordinals for what depends directly on this node: */
 #define DT_N_S_cpus_S_cpu_0_SUPPORTS_ORDS /* nothing */
@@ -2762,8 +2631,8 @@
 #define DT_N_S_flash_controller_0_HASH ctFX2R6fpV5WyHe2sTbWoBJLYdBm32pyig7X2t8Aezc
 
 /* Node's dependency ordinal: */
-#define DT_N_S_flash_controller_0_ORD 24
-#define DT_N_S_flash_controller_0_ORD_STR_SORTABLE 00024
+#define DT_N_S_flash_controller_0_ORD 23
+#define DT_N_S_flash_controller_0_ORD_STR_SORTABLE 00023
 
 /* Ordinals for what this node depends on directly: */
 #define DT_N_S_flash_controller_0_REQUIRES_ORDS \
@@ -2771,7 +2640,7 @@
 
 /* Ordinals for what depends directly on this node: */
 #define DT_N_S_flash_controller_0_SUPPORTS_ORDS \
-	25, /* /flash-controller@0/flash@0 */
+	24, /* /flash-controller@0/flash@0 */
 
 /* Existence and alternate IDs: */
 #define DT_N_S_flash_controller_0_EXISTS 1
@@ -2877,16 +2746,16 @@
 #define DT_N_S_flash_controller_0_S_flash_0_HASH fgzJp1AowC_YhI9HaB30Hh_pD8W56NnB_v2mLebGWeg
 
 /* Node's dependency ordinal: */
-#define DT_N_S_flash_controller_0_S_flash_0_ORD 25
-#define DT_N_S_flash_controller_0_S_flash_0_ORD_STR_SORTABLE 00025
+#define DT_N_S_flash_controller_0_S_flash_0_ORD 24
+#define DT_N_S_flash_controller_0_S_flash_0_ORD_STR_SORTABLE 00024
 
 /* Ordinals for what this node depends on directly: */
 #define DT_N_S_flash_controller_0_S_flash_0_REQUIRES_ORDS \
-	24, /* /flash-controller@0 */
+	23, /* /flash-controller@0 */
 
 /* Ordinals for what depends directly on this node: */
 #define DT_N_S_flash_controller_0_S_flash_0_SUPPORTS_ORDS \
-	26, /* /flash-controller@0/flash@0/partitions */
+	25, /* /flash-controller@0/flash@0/partitions */
 
 /* Existence and alternate IDs: */
 #define DT_N_S_flash_controller_0_S_flash_0_EXISTS 1
@@ -3001,20 +2870,20 @@
 #define DT_N_S_flash_controller_0_S_flash_0_S_partitions_HASH bL2lIHbIMbVcw49rWjIndwWs_DJSGpvbI_wNSPS_j54
 
 /* Node's dependency ordinal: */
-#define DT_N_S_flash_controller_0_S_flash_0_S_partitions_ORD 26
-#define DT_N_S_flash_controller_0_S_flash_0_S_partitions_ORD_STR_SORTABLE 00026
+#define DT_N_S_flash_controller_0_S_flash_0_S_partitions_ORD 25
+#define DT_N_S_flash_controller_0_S_flash_0_S_partitions_ORD_STR_SORTABLE 00025
 
 /* Ordinals for what this node depends on directly: */
 #define DT_N_S_flash_controller_0_S_flash_0_S_partitions_REQUIRES_ORDS \
-	25, /* /flash-controller@0/flash@0 */
+	24, /* /flash-controller@0/flash@0 */
 
 /* Ordinals for what depends directly on this node: */
 #define DT_N_S_flash_controller_0_S_flash_0_S_partitions_SUPPORTS_ORDS \
-	27, /* /flash-controller@0/flash@0/partitions/partition@0 */ \
-	28, /* /flash-controller@0/flash@0/partitions/partition@c000 */ \
-	29, /* /flash-controller@0/flash@0/partitions/partition@75000 */ \
-	30, /* /flash-controller@0/flash@0/partitions/partition@de000 */ \
-	31, /* /flash-controller@0/flash@0/partitions/partition@fc000 */
+	26, /* /flash-controller@0/flash@0/partitions/partition@0 */ \
+	27, /* /flash-controller@0/flash@0/partitions/partition@c000 */ \
+	28, /* /flash-controller@0/flash@0/partitions/partition@75000 */ \
+	29, /* /flash-controller@0/flash@0/partitions/partition@de000 */ \
+	30, /* /flash-controller@0/flash@0/partitions/partition@fc000 */
 
 /* Existence and alternate IDs: */
 #define DT_N_S_flash_controller_0_S_flash_0_S_partitions_EXISTS 1
@@ -3080,12 +2949,12 @@
 #define DT_N_S_flash_controller_0_S_flash_0_S_partitions_S_partition_0_HASH upTs6oSGEM6_xdEOPjOiUJFQO5omUB4icFGiOfKoKWQ
 
 /* Node's dependency ordinal: */
-#define DT_N_S_flash_controller_0_S_flash_0_S_partitions_S_partition_0_ORD 27
-#define DT_N_S_flash_controller_0_S_flash_0_S_partitions_S_partition_0_ORD_STR_SORTABLE 00027
+#define DT_N_S_flash_controller_0_S_flash_0_S_partitions_S_partition_0_ORD 26
+#define DT_N_S_flash_controller_0_S_flash_0_S_partitions_S_partition_0_ORD_STR_SORTABLE 00026
 
 /* Ordinals for what this node depends on directly: */
 #define DT_N_S_flash_controller_0_S_flash_0_S_partitions_S_partition_0_REQUIRES_ORDS \
-	26, /* /flash-controller@0/flash@0/partitions */
+	25, /* /flash-controller@0/flash@0/partitions */
 
 /* Ordinals for what depends directly on this node: */
 #define DT_N_S_flash_controller_0_S_flash_0_S_partitions_S_partition_0_SUPPORTS_ORDS /* nothing */
@@ -3179,12 +3048,12 @@
 #define DT_N_S_flash_controller_0_S_flash_0_S_partitions_S_partition_c000_HASH H2jgsB_Vp8w6xQviTDx9MRqRmoam4XT5I2ubih1kBFM
 
 /* Node's dependency ordinal: */
-#define DT_N_S_flash_controller_0_S_flash_0_S_partitions_S_partition_c000_ORD 28
-#define DT_N_S_flash_controller_0_S_flash_0_S_partitions_S_partition_c000_ORD_STR_SORTABLE 00028
+#define DT_N_S_flash_controller_0_S_flash_0_S_partitions_S_partition_c000_ORD 27
+#define DT_N_S_flash_controller_0_S_flash_0_S_partitions_S_partition_c000_ORD_STR_SORTABLE 00027
 
 /* Ordinals for what this node depends on directly: */
 #define DT_N_S_flash_controller_0_S_flash_0_S_partitions_S_partition_c000_REQUIRES_ORDS \
-	26, /* /flash-controller@0/flash@0/partitions */
+	25, /* /flash-controller@0/flash@0/partitions */
 
 /* Ordinals for what depends directly on this node: */
 #define DT_N_S_flash_controller_0_S_flash_0_S_partitions_S_partition_c000_SUPPORTS_ORDS /* nothing */
@@ -3278,12 +3147,12 @@
 #define DT_N_S_flash_controller_0_S_flash_0_S_partitions_S_partition_75000_HASH kH3jUOBonLEoFdoxOuRLMa9VzRa_pvcY_mHiidQse9g
 
 /* Node's dependency ordinal: */
-#define DT_N_S_flash_controller_0_S_flash_0_S_partitions_S_partition_75000_ORD 29
-#define DT_N_S_flash_controller_0_S_flash_0_S_partitions_S_partition_75000_ORD_STR_SORTABLE 00029
+#define DT_N_S_flash_controller_0_S_flash_0_S_partitions_S_partition_75000_ORD 28
+#define DT_N_S_flash_controller_0_S_flash_0_S_partitions_S_partition_75000_ORD_STR_SORTABLE 00028
 
 /* Ordinals for what this node depends on directly: */
 #define DT_N_S_flash_controller_0_S_flash_0_S_partitions_S_partition_75000_REQUIRES_ORDS \
-	26, /* /flash-controller@0/flash@0/partitions */
+	25, /* /flash-controller@0/flash@0/partitions */
 
 /* Ordinals for what depends directly on this node: */
 #define DT_N_S_flash_controller_0_S_flash_0_S_partitions_S_partition_75000_SUPPORTS_ORDS /* nothing */
@@ -3377,12 +3246,12 @@
 #define DT_N_S_flash_controller_0_S_flash_0_S_partitions_S_partition_de000_HASH Xyk8DFWOGePWbAOPTfOaazGEdAXS76cnXYHFGH32MfE
 
 /* Node's dependency ordinal: */
-#define DT_N_S_flash_controller_0_S_flash_0_S_partitions_S_partition_de000_ORD 30
-#define DT_N_S_flash_controller_0_S_flash_0_S_partitions_S_partition_de000_ORD_STR_SORTABLE 00030
+#define DT_N_S_flash_controller_0_S_flash_0_S_partitions_S_partition_de000_ORD 29
+#define DT_N_S_flash_controller_0_S_flash_0_S_partitions_S_partition_de000_ORD_STR_SORTABLE 00029
 
 /* Ordinals for what this node depends on directly: */
 #define DT_N_S_flash_controller_0_S_flash_0_S_partitions_S_partition_de000_REQUIRES_ORDS \
-	26, /* /flash-controller@0/flash@0/partitions */
+	25, /* /flash-controller@0/flash@0/partitions */
 
 /* Ordinals for what depends directly on this node: */
 #define DT_N_S_flash_controller_0_S_flash_0_S_partitions_S_partition_de000_SUPPORTS_ORDS /* nothing */
@@ -3476,12 +3345,12 @@
 #define DT_N_S_flash_controller_0_S_flash_0_S_partitions_S_partition_fc000_HASH uCX9nDANHvkPqYWhoYcD5OVxO3PJeHttKQ6eK1HCb_Y
 
 /* Node's dependency ordinal: */
-#define DT_N_S_flash_controller_0_S_flash_0_S_partitions_S_partition_fc000_ORD 31
-#define DT_N_S_flash_controller_0_S_flash_0_S_partitions_S_partition_fc000_ORD_STR_SORTABLE 00031
+#define DT_N_S_flash_controller_0_S_flash_0_S_partitions_S_partition_fc000_ORD 30
+#define DT_N_S_flash_controller_0_S_flash_0_S_partitions_S_partition_fc000_ORD_STR_SORTABLE 00030
 
 /* Ordinals for what this node depends on directly: */
 #define DT_N_S_flash_controller_0_S_flash_0_S_partitions_S_partition_fc000_REQUIRES_ORDS \
-	26, /* /flash-controller@0/flash@0/partitions */
+	25, /* /flash-controller@0/flash@0/partitions */
 
 /* Ordinals for what depends directly on this node: */
 #define DT_N_S_flash_controller_0_S_flash_0_S_partitions_S_partition_fc000_SUPPORTS_ORDS /* nothing */
@@ -3528,6 +3397,292 @@
 #define DT_N_S_flash_controller_0_S_flash_0_S_partitions_S_partition_fc000_P_reg_IDX_1_EXISTS 1
 #define DT_N_S_flash_controller_0_S_flash_0_S_partitions_S_partition_fc000_P_reg_IDX_1 16384
 #define DT_N_S_flash_controller_0_S_flash_0_S_partitions_S_partition_fc000_P_reg_EXISTS 1
+
+/*
+ * Devicetree node: /i2c@100
+ *
+ * Node identifier: DT_N_S_i2c_100
+ *
+ * Binding (compatible = zephyr,i2c-emul-controller):
+ *   $ZEPHYR_BASE/dts/bindings/i2c/zephyr,i2c-emul-controller.yaml
+ *
+ * (Descriptions have moved to the Devicetree Bindings Index
+ * in the documentation.)
+ */
+
+/* Node's full path: */
+#define DT_N_S_i2c_100_PATH "/i2c@100"
+
+/* Node's name with unit-address: */
+#define DT_N_S_i2c_100_FULL_NAME "i2c@100"
+#define DT_N_S_i2c_100_FULL_NAME_UNQUOTED i2c@100
+#define DT_N_S_i2c_100_FULL_NAME_TOKEN i2c_100
+#define DT_N_S_i2c_100_FULL_NAME_UPPER_TOKEN I2C_100
+
+/* Node parent (/) identifier: */
+#define DT_N_S_i2c_100_PARENT DT_N
+
+/* Node's index in its parent's list of children: */
+#define DT_N_S_i2c_100_CHILD_IDX 7
+
+/* Helpers for dealing with node labels: */
+#define DT_N_S_i2c_100_NODELABEL_NUM 1
+#define DT_N_S_i2c_100_FOREACH_NODELABEL(fn) fn(i2c0)
+#define DT_N_S_i2c_100_FOREACH_NODELABEL_VARGS(fn, ...) fn(i2c0, __VA_ARGS__)
+#define DT_N_S_i2c_100_FOREACH_ANCESTOR(fn) fn(DT_N)
+
+/* Helper macros for child nodes of this node. */
+#define DT_N_S_i2c_100_CHILD_NUM 1
+#define DT_N_S_i2c_100_CHILD_NUM_STATUS_OKAY 1
+#define DT_N_S_i2c_100_FOREACH_CHILD(fn) fn(DT_N_S_i2c_100_S_bmp390_76)
+#define DT_N_S_i2c_100_FOREACH_CHILD_SEP(fn, sep) fn(DT_N_S_i2c_100_S_bmp390_76)
+#define DT_N_S_i2c_100_FOREACH_CHILD_VARGS(fn, ...) fn(DT_N_S_i2c_100_S_bmp390_76, __VA_ARGS__)
+#define DT_N_S_i2c_100_FOREACH_CHILD_SEP_VARGS(fn, sep, ...) fn(DT_N_S_i2c_100_S_bmp390_76, __VA_ARGS__)
+#define DT_N_S_i2c_100_FOREACH_CHILD_STATUS_OKAY(fn) fn(DT_N_S_i2c_100_S_bmp390_76)
+#define DT_N_S_i2c_100_FOREACH_CHILD_STATUS_OKAY_SEP(fn, sep) fn(DT_N_S_i2c_100_S_bmp390_76)
+#define DT_N_S_i2c_100_FOREACH_CHILD_STATUS_OKAY_VARGS(fn, ...) fn(DT_N_S_i2c_100_S_bmp390_76, __VA_ARGS__)
+#define DT_N_S_i2c_100_FOREACH_CHILD_STATUS_OKAY_SEP_VARGS(fn, sep, ...) fn(DT_N_S_i2c_100_S_bmp390_76, __VA_ARGS__)
+
+/* Node's hash: */
+#define DT_N_S_i2c_100_HASH IUr7tk9i2MSudHINC9CW1jA70R4h9xgedOgqhYMOHo4
+
+/* Node's dependency ordinal: */
+#define DT_N_S_i2c_100_ORD 31
+#define DT_N_S_i2c_100_ORD_STR_SORTABLE 00031
+
+/* Ordinals for what this node depends on directly: */
+#define DT_N_S_i2c_100_REQUIRES_ORDS \
+	0, /* / */
+
+/* Ordinals for what depends directly on this node: */
+#define DT_N_S_i2c_100_SUPPORTS_ORDS \
+	32, /* /i2c@100/bmp390@76 */
+
+/* Existence and alternate IDs: */
+#define DT_N_S_i2c_100_EXISTS 1
+#define DT_N_ALIAS_i2c_0                       DT_N_S_i2c_100
+#define DT_N_INST_0_zephyr_i2c_emul_controller DT_N_S_i2c_100
+#define DT_N_NODELABEL_i2c0                    DT_N_S_i2c_100
+
+/* Macros for properties that are special in the specification: */
+#define DT_N_S_i2c_100_REG_NUM 1
+#define DT_N_S_i2c_100_REG_IDX_0_EXISTS 1
+#define DT_N_S_i2c_100_REG_IDX_0_VAL_ADDRESS 256 /* 0x100 */
+#define DT_N_S_i2c_100_REG_IDX_0_VAL_SIZE 4 /* 0x4 */
+#define DT_N_S_i2c_100_RANGES_NUM 0
+#define DT_N_S_i2c_100_FOREACH_RANGE(fn) 
+#define DT_N_S_i2c_100_IRQ_NUM 0
+#define DT_N_S_i2c_100_IRQ_LEVEL 0
+#define DT_N_S_i2c_100_COMPAT_MATCHES_zephyr_i2c_emul_controller 1
+#define DT_N_S_i2c_100_COMPAT_VENDOR_IDX_0_EXISTS 1
+#define DT_N_S_i2c_100_COMPAT_VENDOR_IDX_0 "Zephyr-specific binding"
+#define DT_N_S_i2c_100_COMPAT_MODEL_IDX_0_EXISTS 1
+#define DT_N_S_i2c_100_COMPAT_MODEL_IDX_0 "i2c-emul-controller"
+#define DT_N_S_i2c_100_STATUS_okay 1
+
+/* Pin control (pinctrl-<i>, pinctrl-names) properties: */
+#define DT_N_S_i2c_100_PINCTRL_NUM 0
+
+/* Generic property macros: */
+#define DT_N_S_i2c_100_P_reg {256 /* 0x100 */, 4 /* 0x4 */}
+#define DT_N_S_i2c_100_P_reg_IDX_0_EXISTS 1
+#define DT_N_S_i2c_100_P_reg_IDX_0 256
+#define DT_N_S_i2c_100_P_reg_IDX_1_EXISTS 1
+#define DT_N_S_i2c_100_P_reg_IDX_1 4
+#define DT_N_S_i2c_100_P_reg_EXISTS 1
+#define DT_N_S_i2c_100_P_target_buffered_mode 0
+#define DT_N_S_i2c_100_P_target_buffered_mode_EXISTS 1
+#define DT_N_S_i2c_100_P_clock_frequency 100000
+#define DT_N_S_i2c_100_P_clock_frequency_EXISTS 1
+#define DT_N_S_i2c_100_P_sq_size 4
+#define DT_N_S_i2c_100_P_sq_size_EXISTS 1
+#define DT_N_S_i2c_100_P_cq_size 4
+#define DT_N_S_i2c_100_P_cq_size_EXISTS 1
+#define DT_N_S_i2c_100_P_status "okay"
+#define DT_N_S_i2c_100_P_status_STRING_UNQUOTED okay
+#define DT_N_S_i2c_100_P_status_STRING_TOKEN okay
+#define DT_N_S_i2c_100_P_status_STRING_UPPER_TOKEN OKAY
+#define DT_N_S_i2c_100_P_status_IDX_0 "okay"
+#define DT_N_S_i2c_100_P_status_IDX_0_EXISTS 1
+#define DT_N_S_i2c_100_P_status_IDX_0_ENUM_IDX 1
+#define DT_N_S_i2c_100_P_status_IDX_0_ENUM_VAL_okay_EXISTS 1
+#define DT_N_S_i2c_100_P_status_FOREACH_PROP_ELEM(fn) fn(DT_N_S_i2c_100, status, 0)
+#define DT_N_S_i2c_100_P_status_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_i2c_100, status, 0)
+#define DT_N_S_i2c_100_P_status_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_i2c_100, status, 0, __VA_ARGS__)
+#define DT_N_S_i2c_100_P_status_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_i2c_100, status, 0, __VA_ARGS__)
+#define DT_N_S_i2c_100_P_status_LEN 1
+#define DT_N_S_i2c_100_P_status_EXISTS 1
+#define DT_N_S_i2c_100_P_compatible {"zephyr,i2c-emul-controller"}
+#define DT_N_S_i2c_100_P_compatible_IDX_0_EXISTS 1
+#define DT_N_S_i2c_100_P_compatible_IDX_0 "zephyr,i2c-emul-controller"
+#define DT_N_S_i2c_100_P_compatible_IDX_0_STRING_UNQUOTED zephyr,i2c-emul-controller
+#define DT_N_S_i2c_100_P_compatible_IDX_0_STRING_TOKEN zephyr_i2c_emul_controller
+#define DT_N_S_i2c_100_P_compatible_IDX_0_STRING_UPPER_TOKEN ZEPHYR_I2C_EMUL_CONTROLLER
+#define DT_N_S_i2c_100_P_compatible_FOREACH_PROP_ELEM(fn) fn(DT_N_S_i2c_100, compatible, 0)
+#define DT_N_S_i2c_100_P_compatible_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_i2c_100, compatible, 0)
+#define DT_N_S_i2c_100_P_compatible_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_i2c_100, compatible, 0, __VA_ARGS__)
+#define DT_N_S_i2c_100_P_compatible_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_i2c_100, compatible, 0, __VA_ARGS__)
+#define DT_N_S_i2c_100_P_compatible_LEN 1
+#define DT_N_S_i2c_100_P_compatible_EXISTS 1
+#define DT_N_S_i2c_100_P_zephyr_deferred_init 0
+#define DT_N_S_i2c_100_P_zephyr_deferred_init_EXISTS 1
+#define DT_N_S_i2c_100_P_wakeup_source 0
+#define DT_N_S_i2c_100_P_wakeup_source_EXISTS 1
+#define DT_N_S_i2c_100_P_zephyr_pm_device_runtime_auto 0
+#define DT_N_S_i2c_100_P_zephyr_pm_device_runtime_auto_EXISTS 1
+
+/*
+ * Devicetree node: /i2c@100/bmp390@76
+ *
+ * Node identifier: DT_N_S_i2c_100_S_bmp390_76
+ *
+ * Binding (compatible = bosch,bmp390):
+ *   $ZEPHYR_BASE/dts/bindings/sensor/bosch,bmp390-i2c.yaml
+ *
+ * (Descriptions have moved to the Devicetree Bindings Index
+ * in the documentation.)
+ */
+
+/* Node's full path: */
+#define DT_N_S_i2c_100_S_bmp390_76_PATH "/i2c@100/bmp390@76"
+
+/* Node's name with unit-address: */
+#define DT_N_S_i2c_100_S_bmp390_76_FULL_NAME "bmp390@76"
+#define DT_N_S_i2c_100_S_bmp390_76_FULL_NAME_UNQUOTED bmp390@76
+#define DT_N_S_i2c_100_S_bmp390_76_FULL_NAME_TOKEN bmp390_76
+#define DT_N_S_i2c_100_S_bmp390_76_FULL_NAME_UPPER_TOKEN BMP390_76
+
+/* Node parent (/i2c@100) identifier: */
+#define DT_N_S_i2c_100_S_bmp390_76_PARENT DT_N_S_i2c_100
+
+/* Node's index in its parent's list of children: */
+#define DT_N_S_i2c_100_S_bmp390_76_CHILD_IDX 0
+
+/* Helpers for dealing with node labels: */
+#define DT_N_S_i2c_100_S_bmp390_76_NODELABEL_NUM 1
+#define DT_N_S_i2c_100_S_bmp390_76_FOREACH_NODELABEL(fn) fn(bmp390)
+#define DT_N_S_i2c_100_S_bmp390_76_FOREACH_NODELABEL_VARGS(fn, ...) fn(bmp390, __VA_ARGS__)
+#define DT_N_S_i2c_100_S_bmp390_76_FOREACH_ANCESTOR(fn) fn(DT_N_S_i2c_100) fn(DT_N)
+
+/* Helper macros for child nodes of this node. */
+#define DT_N_S_i2c_100_S_bmp390_76_CHILD_NUM 0
+#define DT_N_S_i2c_100_S_bmp390_76_CHILD_NUM_STATUS_OKAY 0
+#define DT_N_S_i2c_100_S_bmp390_76_FOREACH_CHILD(fn) 
+#define DT_N_S_i2c_100_S_bmp390_76_FOREACH_CHILD_SEP(fn, sep) 
+#define DT_N_S_i2c_100_S_bmp390_76_FOREACH_CHILD_VARGS(fn, ...) 
+#define DT_N_S_i2c_100_S_bmp390_76_FOREACH_CHILD_SEP_VARGS(fn, sep, ...) 
+#define DT_N_S_i2c_100_S_bmp390_76_FOREACH_CHILD_STATUS_OKAY(fn) 
+#define DT_N_S_i2c_100_S_bmp390_76_FOREACH_CHILD_STATUS_OKAY_SEP(fn, sep) 
+#define DT_N_S_i2c_100_S_bmp390_76_FOREACH_CHILD_STATUS_OKAY_VARGS(fn, ...) 
+#define DT_N_S_i2c_100_S_bmp390_76_FOREACH_CHILD_STATUS_OKAY_SEP_VARGS(fn, sep, ...) 
+
+/* Node's hash: */
+#define DT_N_S_i2c_100_S_bmp390_76_HASH 9Zh8ZjJxGFNW9XUYdUxETFcl85051ivnRP6L4f23Aao
+
+/* Node's dependency ordinal: */
+#define DT_N_S_i2c_100_S_bmp390_76_ORD 32
+#define DT_N_S_i2c_100_S_bmp390_76_ORD_STR_SORTABLE 00032
+
+/* Ordinals for what this node depends on directly: */
+#define DT_N_S_i2c_100_S_bmp390_76_REQUIRES_ORDS \
+	31, /* /i2c@100 */
+
+/* Ordinals for what depends directly on this node: */
+#define DT_N_S_i2c_100_S_bmp390_76_SUPPORTS_ORDS /* nothing */
+
+/* Existence and alternate IDs: */
+#define DT_N_S_i2c_100_S_bmp390_76_EXISTS 1
+#define DT_N_INST_0_bosch_bmp390 DT_N_S_i2c_100_S_bmp390_76
+#define DT_N_NODELABEL_bmp390    DT_N_S_i2c_100_S_bmp390_76
+
+/* Bus info (controller: '/i2c@100', type: '['i2c']') */
+#define DT_N_S_i2c_100_S_bmp390_76_BUS_i2c 1
+#define DT_N_S_i2c_100_S_bmp390_76_BUS DT_N_S_i2c_100
+
+/* Macros for properties that are special in the specification: */
+#define DT_N_S_i2c_100_S_bmp390_76_REG_NUM 1
+#define DT_N_S_i2c_100_S_bmp390_76_REG_IDX_0_EXISTS 1
+#define DT_N_S_i2c_100_S_bmp390_76_REG_IDX_0_VAL_ADDRESS 118 /* 0x76 */
+#define DT_N_S_i2c_100_S_bmp390_76_RANGES_NUM 0
+#define DT_N_S_i2c_100_S_bmp390_76_FOREACH_RANGE(fn) 
+#define DT_N_S_i2c_100_S_bmp390_76_IRQ_NUM 0
+#define DT_N_S_i2c_100_S_bmp390_76_IRQ_LEVEL 0
+#define DT_N_S_i2c_100_S_bmp390_76_COMPAT_MATCHES_bosch_bmp390 1
+#define DT_N_S_i2c_100_S_bmp390_76_COMPAT_VENDOR_IDX_0_EXISTS 1
+#define DT_N_S_i2c_100_S_bmp390_76_COMPAT_VENDOR_IDX_0 "Bosch Sensortec GmbH"
+#define DT_N_S_i2c_100_S_bmp390_76_COMPAT_MODEL_IDX_0_EXISTS 1
+#define DT_N_S_i2c_100_S_bmp390_76_COMPAT_MODEL_IDX_0 "bmp390"
+#define DT_N_S_i2c_100_S_bmp390_76_STATUS_okay 1
+
+/* Pin control (pinctrl-<i>, pinctrl-names) properties: */
+#define DT_N_S_i2c_100_S_bmp390_76_PINCTRL_NUM 0
+
+/* Generic property macros: */
+#define DT_N_S_i2c_100_S_bmp390_76_P_reg {118 /* 0x76 */}
+#define DT_N_S_i2c_100_S_bmp390_76_P_reg_IDX_0_EXISTS 1
+#define DT_N_S_i2c_100_S_bmp390_76_P_reg_IDX_0 118
+#define DT_N_S_i2c_100_S_bmp390_76_P_reg_EXISTS 1
+#define DT_N_S_i2c_100_S_bmp390_76_P_status "okay"
+#define DT_N_S_i2c_100_S_bmp390_76_P_status_STRING_UNQUOTED okay
+#define DT_N_S_i2c_100_S_bmp390_76_P_status_STRING_TOKEN okay
+#define DT_N_S_i2c_100_S_bmp390_76_P_status_STRING_UPPER_TOKEN OKAY
+#define DT_N_S_i2c_100_S_bmp390_76_P_status_IDX_0 "okay"
+#define DT_N_S_i2c_100_S_bmp390_76_P_status_IDX_0_EXISTS 1
+#define DT_N_S_i2c_100_S_bmp390_76_P_status_IDX_0_ENUM_IDX 1
+#define DT_N_S_i2c_100_S_bmp390_76_P_status_IDX_0_ENUM_VAL_okay_EXISTS 1
+#define DT_N_S_i2c_100_S_bmp390_76_P_status_FOREACH_PROP_ELEM(fn) fn(DT_N_S_i2c_100_S_bmp390_76, status, 0)
+#define DT_N_S_i2c_100_S_bmp390_76_P_status_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_i2c_100_S_bmp390_76, status, 0)
+#define DT_N_S_i2c_100_S_bmp390_76_P_status_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_i2c_100_S_bmp390_76, status, 0, __VA_ARGS__)
+#define DT_N_S_i2c_100_S_bmp390_76_P_status_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_i2c_100_S_bmp390_76, status, 0, __VA_ARGS__)
+#define DT_N_S_i2c_100_S_bmp390_76_P_status_LEN 1
+#define DT_N_S_i2c_100_S_bmp390_76_P_status_EXISTS 1
+#define DT_N_S_i2c_100_S_bmp390_76_P_compatible {"bosch,bmp390"}
+#define DT_N_S_i2c_100_S_bmp390_76_P_compatible_IDX_0_EXISTS 1
+#define DT_N_S_i2c_100_S_bmp390_76_P_compatible_IDX_0 "bosch,bmp390"
+#define DT_N_S_i2c_100_S_bmp390_76_P_compatible_IDX_0_STRING_UNQUOTED bosch,bmp390
+#define DT_N_S_i2c_100_S_bmp390_76_P_compatible_IDX_0_STRING_TOKEN bosch_bmp390
+#define DT_N_S_i2c_100_S_bmp390_76_P_compatible_IDX_0_STRING_UPPER_TOKEN BOSCH_BMP390
+#define DT_N_S_i2c_100_S_bmp390_76_P_compatible_FOREACH_PROP_ELEM(fn) fn(DT_N_S_i2c_100_S_bmp390_76, compatible, 0)
+#define DT_N_S_i2c_100_S_bmp390_76_P_compatible_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_i2c_100_S_bmp390_76, compatible, 0)
+#define DT_N_S_i2c_100_S_bmp390_76_P_compatible_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_i2c_100_S_bmp390_76, compatible, 0, __VA_ARGS__)
+#define DT_N_S_i2c_100_S_bmp390_76_P_compatible_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_i2c_100_S_bmp390_76, compatible, 0, __VA_ARGS__)
+#define DT_N_S_i2c_100_S_bmp390_76_P_compatible_LEN 1
+#define DT_N_S_i2c_100_S_bmp390_76_P_compatible_EXISTS 1
+#define DT_N_S_i2c_100_S_bmp390_76_P_zephyr_deferred_init 0
+#define DT_N_S_i2c_100_S_bmp390_76_P_zephyr_deferred_init_EXISTS 1
+#define DT_N_S_i2c_100_S_bmp390_76_P_wakeup_source 0
+#define DT_N_S_i2c_100_S_bmp390_76_P_wakeup_source_EXISTS 1
+#define DT_N_S_i2c_100_S_bmp390_76_P_zephyr_pm_device_runtime_auto 0
+#define DT_N_S_i2c_100_S_bmp390_76_P_zephyr_pm_device_runtime_auto_EXISTS 1
+#define DT_N_S_i2c_100_S_bmp390_76_P_odr "200"
+#define DT_N_S_i2c_100_S_bmp390_76_P_odr_STRING_UNQUOTED 200
+#define DT_N_S_i2c_100_S_bmp390_76_P_odr_STRING_TOKEN 200
+#define DT_N_S_i2c_100_S_bmp390_76_P_odr_STRING_UPPER_TOKEN 200
+#define DT_N_S_i2c_100_S_bmp390_76_P_odr_IDX_0 "200"
+#define DT_N_S_i2c_100_S_bmp390_76_P_odr_IDX_0_EXISTS 1
+#define DT_N_S_i2c_100_S_bmp390_76_P_odr_IDX_0_ENUM_IDX 0
+#define DT_N_S_i2c_100_S_bmp390_76_P_odr_IDX_0_ENUM_VAL_200_EXISTS 1
+#define DT_N_S_i2c_100_S_bmp390_76_P_odr_FOREACH_PROP_ELEM(fn) fn(DT_N_S_i2c_100_S_bmp390_76, odr, 0)
+#define DT_N_S_i2c_100_S_bmp390_76_P_odr_FOREACH_PROP_ELEM_SEP(fn, sep) fn(DT_N_S_i2c_100_S_bmp390_76, odr, 0)
+#define DT_N_S_i2c_100_S_bmp390_76_P_odr_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_i2c_100_S_bmp390_76, odr, 0, __VA_ARGS__)
+#define DT_N_S_i2c_100_S_bmp390_76_P_odr_FOREACH_PROP_ELEM_SEP_VARGS(fn, sep, ...) fn(DT_N_S_i2c_100_S_bmp390_76, odr, 0, __VA_ARGS__)
+#define DT_N_S_i2c_100_S_bmp390_76_P_odr_LEN 1
+#define DT_N_S_i2c_100_S_bmp390_76_P_odr_EXISTS 1
+#define DT_N_S_i2c_100_S_bmp390_76_P_osr_press 4
+#define DT_N_S_i2c_100_S_bmp390_76_P_osr_press_IDX_0_ENUM_IDX 2
+#define DT_N_S_i2c_100_S_bmp390_76_P_osr_press_IDX_0_EXISTS 1
+#define DT_N_S_i2c_100_S_bmp390_76_P_osr_press_IDX_0_ENUM_VAL_4_EXISTS 1
+#define DT_N_S_i2c_100_S_bmp390_76_P_osr_press_EXISTS 1
+#define DT_N_S_i2c_100_S_bmp390_76_P_osr_temp 1
+#define DT_N_S_i2c_100_S_bmp390_76_P_osr_temp_IDX_0_ENUM_IDX 0
+#define DT_N_S_i2c_100_S_bmp390_76_P_osr_temp_IDX_0_EXISTS 1
+#define DT_N_S_i2c_100_S_bmp390_76_P_osr_temp_IDX_0_ENUM_VAL_1_EXISTS 1
+#define DT_N_S_i2c_100_S_bmp390_76_P_osr_temp_EXISTS 1
+#define DT_N_S_i2c_100_S_bmp390_76_P_iir_filter 0
+#define DT_N_S_i2c_100_S_bmp390_76_P_iir_filter_IDX_0_ENUM_IDX 0
+#define DT_N_S_i2c_100_S_bmp390_76_P_iir_filter_IDX_0_EXISTS 1
+#define DT_N_S_i2c_100_S_bmp390_76_P_iir_filter_IDX_0_ENUM_VAL_0_EXISTS 1
+#define DT_N_S_i2c_100_S_bmp390_76_P_iir_filter_EXISTS 1
 
 /*
  * Devicetree node: /gpio_emul
@@ -3578,8 +3733,8 @@
 #define DT_N_S_gpio_emul_HASH _0N_PdrjTKGyS0bZFNYpN2Hk09c3RdQXkTtZOb1ZVRg
 
 /* Node's dependency ordinal: */
-#define DT_N_S_gpio_emul_ORD 32
-#define DT_N_S_gpio_emul_ORD_STR_SORTABLE 00032
+#define DT_N_S_gpio_emul_ORD 33
+#define DT_N_S_gpio_emul_ORD_STR_SORTABLE 00033
 
 /* Ordinals for what this node depends on directly: */
 #define DT_N_S_gpio_emul_REQUIRES_ORDS \
@@ -3587,8 +3742,8 @@
 
 /* Ordinals for what depends directly on this node: */
 #define DT_N_S_gpio_emul_SUPPORTS_ORDS \
-	33, /* /leds */ \
-	34, /* /leds/led_0 */
+	34, /* /leds */ \
+	35, /* /leds/led_0 */
 
 /* Existence and alternate IDs: */
 #define DT_N_S_gpio_emul_EXISTS 1
@@ -3706,17 +3861,17 @@
 #define DT_N_S_leds_HASH bMroFUocDdjE3kJ38dK18mDvlCOPoyya5kIIs76irj8
 
 /* Node's dependency ordinal: */
-#define DT_N_S_leds_ORD 33
-#define DT_N_S_leds_ORD_STR_SORTABLE 00033
+#define DT_N_S_leds_ORD 34
+#define DT_N_S_leds_ORD_STR_SORTABLE 00034
 
 /* Ordinals for what this node depends on directly: */
 #define DT_N_S_leds_REQUIRES_ORDS \
 	0, /* / */ \
-	32, /* /gpio_emul */
+	33, /* /gpio_emul */
 
 /* Ordinals for what depends directly on this node: */
 #define DT_N_S_leds_SUPPORTS_ORDS \
-	34, /* /leds/led_0 */
+	35, /* /leds/led_0 */
 
 /* Existence and alternate IDs: */
 #define DT_N_S_leds_EXISTS 1
@@ -3794,13 +3949,13 @@
 #define DT_N_S_leds_S_led_0_HASH kqSZv01Dnr_1hPdmxPVlr9u8kLMk_UWHIyVHG3GknSY
 
 /* Node's dependency ordinal: */
-#define DT_N_S_leds_S_led_0_ORD 34
-#define DT_N_S_leds_S_led_0_ORD_STR_SORTABLE 00034
+#define DT_N_S_leds_S_led_0_ORD 35
+#define DT_N_S_leds_S_led_0_ORD_STR_SORTABLE 00035
 
 /* Ordinals for what this node depends on directly: */
 #define DT_N_S_leds_S_led_0_REQUIRES_ORDS \
-	32, /* /gpio_emul */ \
-	33, /* /leds */
+	33, /* /gpio_emul */ \
+	34, /* /leds */
 
 /* Ordinals for what depends directly on this node: */
 #define DT_N_S_leds_S_led_0_SUPPORTS_ORDS /* nothing */
@@ -3874,10 +4029,10 @@
 #define DT_CHOSEN_zephyr_touch_EXISTS            1
 
 /* Macros for iterating over all nodes and enabled nodes */
-#define DT_FOREACH_HELPER(fn) fn(DT_N) fn(DT_N_S_chosen) fn(DT_N_S_aliases) fn(DT_N_S_leds) fn(DT_N_S_leds_S_led_0) fn(DT_N_S_lvgl_pointer) fn(DT_N_S_cpus) fn(DT_N_S_cpus_S_cpu_0) fn(DT_N_S_flash_controller_0) fn(DT_N_S_flash_controller_0_S_flash_0) fn(DT_N_S_flash_controller_0_S_flash_0_S_partitions) fn(DT_N_S_flash_controller_0_S_flash_0_S_partitions_S_partition_0) fn(DT_N_S_flash_controller_0_S_flash_0_S_partitions_S_partition_c000) fn(DT_N_S_flash_controller_0_S_flash_0_S_partitions_S_partition_75000) fn(DT_N_S_flash_controller_0_S_flash_0_S_partitions_S_partition_de000) fn(DT_N_S_flash_controller_0_S_flash_0_S_partitions_S_partition_fc000) fn(DT_N_S_eeprom) fn(DT_N_S_i2c_100) fn(DT_N_S_spi_200) fn(DT_N_S_espi_300) fn(DT_N_S_mspi_400) fn(DT_N_S_uart) fn(DT_N_S_uart_1) fn(DT_N_S_rng) fn(DT_N_S_counter) fn(DT_N_S_gpio_emul) fn(DT_N_S_udc0) fn(DT_N_S_sdl_dc) fn(DT_N_S_input_sdl_touch) fn(DT_N_S_can_loopback0) fn(DT_N_S_can) fn(DT_N_S_rtc) fn(DT_N_S_adc) fn(DT_N_S_dma) fn(DT_N_S_bt_hci_userchan)
-#define DT_FOREACH_OKAY_HELPER(fn) fn(DT_N) fn(DT_N_S_chosen) fn(DT_N_S_aliases) fn(DT_N_S_leds) fn(DT_N_S_leds_S_led_0) fn(DT_N_S_lvgl_pointer) fn(DT_N_S_cpus) fn(DT_N_S_cpus_S_cpu_0) fn(DT_N_S_flash_controller_0) fn(DT_N_S_flash_controller_0_S_flash_0) fn(DT_N_S_flash_controller_0_S_flash_0_S_partitions) fn(DT_N_S_flash_controller_0_S_flash_0_S_partitions_S_partition_0) fn(DT_N_S_flash_controller_0_S_flash_0_S_partitions_S_partition_c000) fn(DT_N_S_flash_controller_0_S_flash_0_S_partitions_S_partition_75000) fn(DT_N_S_flash_controller_0_S_flash_0_S_partitions_S_partition_de000) fn(DT_N_S_flash_controller_0_S_flash_0_S_partitions_S_partition_fc000) fn(DT_N_S_eeprom) fn(DT_N_S_i2c_100) fn(DT_N_S_spi_200) fn(DT_N_S_espi_300) fn(DT_N_S_mspi_400) fn(DT_N_S_uart) fn(DT_N_S_uart_1) fn(DT_N_S_rng) fn(DT_N_S_counter) fn(DT_N_S_gpio_emul) fn(DT_N_S_udc0) fn(DT_N_S_sdl_dc) fn(DT_N_S_input_sdl_touch) fn(DT_N_S_can_loopback0) fn(DT_N_S_rtc) fn(DT_N_S_adc) fn(DT_N_S_dma) fn(DT_N_S_bt_hci_userchan)
-#define DT_FOREACH_VARGS_HELPER(fn, ...) fn(DT_N, __VA_ARGS__) fn(DT_N_S_chosen, __VA_ARGS__) fn(DT_N_S_aliases, __VA_ARGS__) fn(DT_N_S_leds, __VA_ARGS__) fn(DT_N_S_leds_S_led_0, __VA_ARGS__) fn(DT_N_S_lvgl_pointer, __VA_ARGS__) fn(DT_N_S_cpus, __VA_ARGS__) fn(DT_N_S_cpus_S_cpu_0, __VA_ARGS__) fn(DT_N_S_flash_controller_0, __VA_ARGS__) fn(DT_N_S_flash_controller_0_S_flash_0, __VA_ARGS__) fn(DT_N_S_flash_controller_0_S_flash_0_S_partitions, __VA_ARGS__) fn(DT_N_S_flash_controller_0_S_flash_0_S_partitions_S_partition_0, __VA_ARGS__) fn(DT_N_S_flash_controller_0_S_flash_0_S_partitions_S_partition_c000, __VA_ARGS__) fn(DT_N_S_flash_controller_0_S_flash_0_S_partitions_S_partition_75000, __VA_ARGS__) fn(DT_N_S_flash_controller_0_S_flash_0_S_partitions_S_partition_de000, __VA_ARGS__) fn(DT_N_S_flash_controller_0_S_flash_0_S_partitions_S_partition_fc000, __VA_ARGS__) fn(DT_N_S_eeprom, __VA_ARGS__) fn(DT_N_S_i2c_100, __VA_ARGS__) fn(DT_N_S_spi_200, __VA_ARGS__) fn(DT_N_S_espi_300, __VA_ARGS__) fn(DT_N_S_mspi_400, __VA_ARGS__) fn(DT_N_S_uart, __VA_ARGS__) fn(DT_N_S_uart_1, __VA_ARGS__) fn(DT_N_S_rng, __VA_ARGS__) fn(DT_N_S_counter, __VA_ARGS__) fn(DT_N_S_gpio_emul, __VA_ARGS__) fn(DT_N_S_udc0, __VA_ARGS__) fn(DT_N_S_sdl_dc, __VA_ARGS__) fn(DT_N_S_input_sdl_touch, __VA_ARGS__) fn(DT_N_S_can_loopback0, __VA_ARGS__) fn(DT_N_S_can, __VA_ARGS__) fn(DT_N_S_rtc, __VA_ARGS__) fn(DT_N_S_adc, __VA_ARGS__) fn(DT_N_S_dma, __VA_ARGS__) fn(DT_N_S_bt_hci_userchan, __VA_ARGS__)
-#define DT_FOREACH_OKAY_VARGS_HELPER(fn, ...) fn(DT_N, __VA_ARGS__) fn(DT_N_S_chosen, __VA_ARGS__) fn(DT_N_S_aliases, __VA_ARGS__) fn(DT_N_S_leds, __VA_ARGS__) fn(DT_N_S_leds_S_led_0, __VA_ARGS__) fn(DT_N_S_lvgl_pointer, __VA_ARGS__) fn(DT_N_S_cpus, __VA_ARGS__) fn(DT_N_S_cpus_S_cpu_0, __VA_ARGS__) fn(DT_N_S_flash_controller_0, __VA_ARGS__) fn(DT_N_S_flash_controller_0_S_flash_0, __VA_ARGS__) fn(DT_N_S_flash_controller_0_S_flash_0_S_partitions, __VA_ARGS__) fn(DT_N_S_flash_controller_0_S_flash_0_S_partitions_S_partition_0, __VA_ARGS__) fn(DT_N_S_flash_controller_0_S_flash_0_S_partitions_S_partition_c000, __VA_ARGS__) fn(DT_N_S_flash_controller_0_S_flash_0_S_partitions_S_partition_75000, __VA_ARGS__) fn(DT_N_S_flash_controller_0_S_flash_0_S_partitions_S_partition_de000, __VA_ARGS__) fn(DT_N_S_flash_controller_0_S_flash_0_S_partitions_S_partition_fc000, __VA_ARGS__) fn(DT_N_S_eeprom, __VA_ARGS__) fn(DT_N_S_i2c_100, __VA_ARGS__) fn(DT_N_S_spi_200, __VA_ARGS__) fn(DT_N_S_espi_300, __VA_ARGS__) fn(DT_N_S_mspi_400, __VA_ARGS__) fn(DT_N_S_uart, __VA_ARGS__) fn(DT_N_S_uart_1, __VA_ARGS__) fn(DT_N_S_rng, __VA_ARGS__) fn(DT_N_S_counter, __VA_ARGS__) fn(DT_N_S_gpio_emul, __VA_ARGS__) fn(DT_N_S_udc0, __VA_ARGS__) fn(DT_N_S_sdl_dc, __VA_ARGS__) fn(DT_N_S_input_sdl_touch, __VA_ARGS__) fn(DT_N_S_can_loopback0, __VA_ARGS__) fn(DT_N_S_rtc, __VA_ARGS__) fn(DT_N_S_adc, __VA_ARGS__) fn(DT_N_S_dma, __VA_ARGS__) fn(DT_N_S_bt_hci_userchan, __VA_ARGS__)
+#define DT_FOREACH_HELPER(fn) fn(DT_N) fn(DT_N_S_chosen) fn(DT_N_S_aliases) fn(DT_N_S_leds) fn(DT_N_S_leds_S_led_0) fn(DT_N_S_lvgl_pointer) fn(DT_N_S_cpus) fn(DT_N_S_cpus_S_cpu_0) fn(DT_N_S_flash_controller_0) fn(DT_N_S_flash_controller_0_S_flash_0) fn(DT_N_S_flash_controller_0_S_flash_0_S_partitions) fn(DT_N_S_flash_controller_0_S_flash_0_S_partitions_S_partition_0) fn(DT_N_S_flash_controller_0_S_flash_0_S_partitions_S_partition_c000) fn(DT_N_S_flash_controller_0_S_flash_0_S_partitions_S_partition_75000) fn(DT_N_S_flash_controller_0_S_flash_0_S_partitions_S_partition_de000) fn(DT_N_S_flash_controller_0_S_flash_0_S_partitions_S_partition_fc000) fn(DT_N_S_eeprom) fn(DT_N_S_i2c_100) fn(DT_N_S_i2c_100_S_bmp390_76) fn(DT_N_S_spi_200) fn(DT_N_S_espi_300) fn(DT_N_S_mspi_400) fn(DT_N_S_uart) fn(DT_N_S_uart_1) fn(DT_N_S_rng) fn(DT_N_S_counter) fn(DT_N_S_gpio_emul) fn(DT_N_S_udc0) fn(DT_N_S_sdl_dc) fn(DT_N_S_input_sdl_touch) fn(DT_N_S_can_loopback0) fn(DT_N_S_can) fn(DT_N_S_rtc) fn(DT_N_S_adc) fn(DT_N_S_dma) fn(DT_N_S_bt_hci_userchan)
+#define DT_FOREACH_OKAY_HELPER(fn) fn(DT_N) fn(DT_N_S_chosen) fn(DT_N_S_aliases) fn(DT_N_S_leds) fn(DT_N_S_leds_S_led_0) fn(DT_N_S_lvgl_pointer) fn(DT_N_S_cpus) fn(DT_N_S_cpus_S_cpu_0) fn(DT_N_S_flash_controller_0) fn(DT_N_S_flash_controller_0_S_flash_0) fn(DT_N_S_flash_controller_0_S_flash_0_S_partitions) fn(DT_N_S_flash_controller_0_S_flash_0_S_partitions_S_partition_0) fn(DT_N_S_flash_controller_0_S_flash_0_S_partitions_S_partition_c000) fn(DT_N_S_flash_controller_0_S_flash_0_S_partitions_S_partition_75000) fn(DT_N_S_flash_controller_0_S_flash_0_S_partitions_S_partition_de000) fn(DT_N_S_flash_controller_0_S_flash_0_S_partitions_S_partition_fc000) fn(DT_N_S_eeprom) fn(DT_N_S_i2c_100) fn(DT_N_S_i2c_100_S_bmp390_76) fn(DT_N_S_spi_200) fn(DT_N_S_espi_300) fn(DT_N_S_mspi_400) fn(DT_N_S_uart) fn(DT_N_S_uart_1) fn(DT_N_S_rng) fn(DT_N_S_counter) fn(DT_N_S_gpio_emul) fn(DT_N_S_udc0) fn(DT_N_S_sdl_dc) fn(DT_N_S_input_sdl_touch) fn(DT_N_S_can_loopback0) fn(DT_N_S_rtc) fn(DT_N_S_adc) fn(DT_N_S_dma) fn(DT_N_S_bt_hci_userchan)
+#define DT_FOREACH_VARGS_HELPER(fn, ...) fn(DT_N, __VA_ARGS__) fn(DT_N_S_chosen, __VA_ARGS__) fn(DT_N_S_aliases, __VA_ARGS__) fn(DT_N_S_leds, __VA_ARGS__) fn(DT_N_S_leds_S_led_0, __VA_ARGS__) fn(DT_N_S_lvgl_pointer, __VA_ARGS__) fn(DT_N_S_cpus, __VA_ARGS__) fn(DT_N_S_cpus_S_cpu_0, __VA_ARGS__) fn(DT_N_S_flash_controller_0, __VA_ARGS__) fn(DT_N_S_flash_controller_0_S_flash_0, __VA_ARGS__) fn(DT_N_S_flash_controller_0_S_flash_0_S_partitions, __VA_ARGS__) fn(DT_N_S_flash_controller_0_S_flash_0_S_partitions_S_partition_0, __VA_ARGS__) fn(DT_N_S_flash_controller_0_S_flash_0_S_partitions_S_partition_c000, __VA_ARGS__) fn(DT_N_S_flash_controller_0_S_flash_0_S_partitions_S_partition_75000, __VA_ARGS__) fn(DT_N_S_flash_controller_0_S_flash_0_S_partitions_S_partition_de000, __VA_ARGS__) fn(DT_N_S_flash_controller_0_S_flash_0_S_partitions_S_partition_fc000, __VA_ARGS__) fn(DT_N_S_eeprom, __VA_ARGS__) fn(DT_N_S_i2c_100, __VA_ARGS__) fn(DT_N_S_i2c_100_S_bmp390_76, __VA_ARGS__) fn(DT_N_S_spi_200, __VA_ARGS__) fn(DT_N_S_espi_300, __VA_ARGS__) fn(DT_N_S_mspi_400, __VA_ARGS__) fn(DT_N_S_uart, __VA_ARGS__) fn(DT_N_S_uart_1, __VA_ARGS__) fn(DT_N_S_rng, __VA_ARGS__) fn(DT_N_S_counter, __VA_ARGS__) fn(DT_N_S_gpio_emul, __VA_ARGS__) fn(DT_N_S_udc0, __VA_ARGS__) fn(DT_N_S_sdl_dc, __VA_ARGS__) fn(DT_N_S_input_sdl_touch, __VA_ARGS__) fn(DT_N_S_can_loopback0, __VA_ARGS__) fn(DT_N_S_can, __VA_ARGS__) fn(DT_N_S_rtc, __VA_ARGS__) fn(DT_N_S_adc, __VA_ARGS__) fn(DT_N_S_dma, __VA_ARGS__) fn(DT_N_S_bt_hci_userchan, __VA_ARGS__)
+#define DT_FOREACH_OKAY_VARGS_HELPER(fn, ...) fn(DT_N, __VA_ARGS__) fn(DT_N_S_chosen, __VA_ARGS__) fn(DT_N_S_aliases, __VA_ARGS__) fn(DT_N_S_leds, __VA_ARGS__) fn(DT_N_S_leds_S_led_0, __VA_ARGS__) fn(DT_N_S_lvgl_pointer, __VA_ARGS__) fn(DT_N_S_cpus, __VA_ARGS__) fn(DT_N_S_cpus_S_cpu_0, __VA_ARGS__) fn(DT_N_S_flash_controller_0, __VA_ARGS__) fn(DT_N_S_flash_controller_0_S_flash_0, __VA_ARGS__) fn(DT_N_S_flash_controller_0_S_flash_0_S_partitions, __VA_ARGS__) fn(DT_N_S_flash_controller_0_S_flash_0_S_partitions_S_partition_0, __VA_ARGS__) fn(DT_N_S_flash_controller_0_S_flash_0_S_partitions_S_partition_c000, __VA_ARGS__) fn(DT_N_S_flash_controller_0_S_flash_0_S_partitions_S_partition_75000, __VA_ARGS__) fn(DT_N_S_flash_controller_0_S_flash_0_S_partitions_S_partition_de000, __VA_ARGS__) fn(DT_N_S_flash_controller_0_S_flash_0_S_partitions_S_partition_fc000, __VA_ARGS__) fn(DT_N_S_eeprom, __VA_ARGS__) fn(DT_N_S_i2c_100, __VA_ARGS__) fn(DT_N_S_i2c_100_S_bmp390_76, __VA_ARGS__) fn(DT_N_S_spi_200, __VA_ARGS__) fn(DT_N_S_espi_300, __VA_ARGS__) fn(DT_N_S_mspi_400, __VA_ARGS__) fn(DT_N_S_uart, __VA_ARGS__) fn(DT_N_S_uart_1, __VA_ARGS__) fn(DT_N_S_rng, __VA_ARGS__) fn(DT_N_S_counter, __VA_ARGS__) fn(DT_N_S_gpio_emul, __VA_ARGS__) fn(DT_N_S_udc0, __VA_ARGS__) fn(DT_N_S_sdl_dc, __VA_ARGS__) fn(DT_N_S_input_sdl_touch, __VA_ARGS__) fn(DT_N_S_can_loopback0, __VA_ARGS__) fn(DT_N_S_rtc, __VA_ARGS__) fn(DT_N_S_adc, __VA_ARGS__) fn(DT_N_S_dma, __VA_ARGS__) fn(DT_N_S_bt_hci_userchan, __VA_ARGS__)
 #define DT_COMPAT_fixed_partitions_LABEL_mcuboot DT_N_S_flash_controller_0_S_flash_0_S_partitions_S_partition_0
 #define DT_COMPAT_fixed_partitions_LABEL_mcuboot_EXISTS 1
 #define DT_COMPAT_fixed_partitions_LABEL_image_0 DT_N_S_flash_controller_0_S_flash_0_S_partitions_S_partition_c000
@@ -3901,6 +4056,7 @@
 #define DT_COMPAT_HAS_OKAY_fixed_partitions 1
 #define DT_COMPAT_HAS_OKAY_zephyr_sim_eeprom 1
 #define DT_COMPAT_HAS_OKAY_zephyr_i2c_emul_controller 1
+#define DT_COMPAT_HAS_OKAY_bosch_bmp390 1
 #define DT_COMPAT_HAS_OKAY_zephyr_spi_emul_controller 1
 #define DT_COMPAT_HAS_OKAY_zephyr_espi_emul_controller 1
 #define DT_COMPAT_HAS_OKAY_zephyr_mspi_emul_controller 1
@@ -3929,6 +4085,7 @@
 #define DT_N_INST_fixed_partitions_NUM_OKAY 1
 #define DT_N_INST_zephyr_sim_eeprom_NUM_OKAY 1
 #define DT_N_INST_zephyr_i2c_emul_controller_NUM_OKAY 1
+#define DT_N_INST_bosch_bmp390_NUM_OKAY 1
 #define DT_N_INST_zephyr_spi_emul_controller_NUM_OKAY 1
 #define DT_N_INST_zephyr_espi_emul_controller_NUM_OKAY 1
 #define DT_N_INST_zephyr_mspi_emul_controller_NUM_OKAY 1
@@ -3980,6 +4137,10 @@
 #define DT_FOREACH_OKAY_VARGS_zephyr_i2c_emul_controller(fn, ...) fn(DT_N_S_i2c_100, __VA_ARGS__)
 #define DT_FOREACH_OKAY_INST_zephyr_i2c_emul_controller(fn) fn(0)
 #define DT_FOREACH_OKAY_INST_VARGS_zephyr_i2c_emul_controller(fn, ...) fn(0, __VA_ARGS__)
+#define DT_FOREACH_OKAY_bosch_bmp390(fn) fn(DT_N_S_i2c_100_S_bmp390_76)
+#define DT_FOREACH_OKAY_VARGS_bosch_bmp390(fn, ...) fn(DT_N_S_i2c_100_S_bmp390_76, __VA_ARGS__)
+#define DT_FOREACH_OKAY_INST_bosch_bmp390(fn) fn(0)
+#define DT_FOREACH_OKAY_INST_VARGS_bosch_bmp390(fn, ...) fn(0, __VA_ARGS__)
 #define DT_FOREACH_OKAY_zephyr_spi_emul_controller(fn) fn(DT_N_S_spi_200)
 #define DT_FOREACH_OKAY_VARGS_zephyr_spi_emul_controller(fn, ...) fn(DT_N_S_spi_200, __VA_ARGS__)
 #define DT_FOREACH_OKAY_INST_zephyr_spi_emul_controller(fn) fn(0)
@@ -4044,3 +4205,4 @@
 /*
  * Bus information for status "okay" nodes of each compatible
  */
+#define DT_COMPAT_bosch_bmp390_BUS_i2c 1

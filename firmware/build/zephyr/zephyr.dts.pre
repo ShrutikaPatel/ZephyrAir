@@ -299,4 +299,18 @@
 };
 # 8 "/home/shrutika/zephyrproject/zephyr/boards/native/native_sim/native_sim_64.dts" 2
 # 0 "<command-line>" 2
+# 1 "/home/shrutika/zephyrproject/ZephyrAir/firmware/boards/native_sim_native_64.overlay" 1
+
+
+
+
+&i2c0 {
+ status = "okay";
+ bmp390: bmp390@76 {
+  compatible = "bosch,bmp390";
+  reg = <0x76>;
+  status = "okay";
+ };
+};
+# 0 "<command-line>" 2
 # 1 "/home/shrutika/zephyrproject/zephyr/misc/empty_file.c"

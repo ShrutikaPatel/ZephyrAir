@@ -96,6 +96,11 @@
 		#size-cells = < 0x0 >;
 		#forward-cells = < 0x1 >;
 		reg = < 0x100 0x4 >;
+		bmp390: bmp390@76 {
+			compatible = "bosch,bmp390";
+			reg = < 0x76 >;
+			status = "okay";
+		};
 	};
 	spi0: spi@200 {
 		status = "okay";

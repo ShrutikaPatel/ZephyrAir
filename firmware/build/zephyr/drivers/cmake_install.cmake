@@ -79,6 +79,11 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
+  include("/home/shrutika/zephyrproject/ZephyrAir/firmware/build/zephyr/drivers/i2c/cmake_install.cmake")
+endif()
+
+if(NOT CMAKE_INSTALL_LOCAL_ONLY)
+  # Include the install script for the subdirectory.
   include("/home/shrutika/zephyrproject/ZephyrAir/firmware/build/zephyr/drivers/timer/cmake_install.cmake")
 endif()
 
