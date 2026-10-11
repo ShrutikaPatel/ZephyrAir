@@ -196,6 +196,7 @@ static int cmd_sensor_status(const struct shell *sh, size_t argc, char **argv)
 
 static int cmd_sensor_fault(const struct shell *sh, size_t argc, char **argv)
 {
+#ifdef CONFIG_EMUL
     if (argc < 2) {
         shell_error(sh, "Usage: sensor fault <count>");
         return -EINVAL;
@@ -210,6 +211,12 @@ static int cmd_sensor_fault(const struct shell *sh, size_t argc, char **argv)
     bmp390_emul_inject_faults((uint32_t)count);
     shell_print(sh, "Injected %d I2C fault(s).", count);
     return 0;
+#else
+    ARG_UNUSED(argc);
+    ARG_UNUSED(argv);
+    shell_print(sh, "Fault injection is only supported on native_sim (CONFIG_EMUL).");
+    return -ENOTSUP;
+#endif
 }
 
 SHELL_STATIC_SUBCMD_SET_CREATE(sub_sensor,

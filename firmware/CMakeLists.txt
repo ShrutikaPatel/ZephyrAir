@@ -8,10 +8,13 @@ target_include_directories(app PRIVATE
     src/bmp3_api
 )
 
-target_sources(app PRIVATE 
+target_sources(app PRIVATE
     src/main.c
     src/bmp390_bridge.c
     src/bmp3_api/bmp3.c
-    src/bmp390_emul.c
     src/dsp_filter.c
+)
+
+target_sources_ifdef(CONFIG_EMUL app PRIVATE
+    src/bmp390_emul.c
 )

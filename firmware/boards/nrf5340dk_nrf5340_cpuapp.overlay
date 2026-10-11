@@ -1,0 +1,12 @@
+/*
+ * Devicetree overlay for Nordic nRF5340 DK (Application Core)
+ * Connects the Bosch BMP390 sensor to TWIM1 (I2C1) at address 0x76.
+ */
+&i2c1 {
+	status = "okay";
+	bmp390: bmp390@76 {
+		compatible = "bosch,bmp390";
+		reg = <0x76>;
+		status = "okay";
+	};
+};
