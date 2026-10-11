@@ -46,7 +46,7 @@ class TelemetryDashboard:
         self.fig.canvas.manager.set_window_title("ZephyrAir — Live Telemetry Dashboard")
         self.fig.suptitle("ZephyrAir: nRF5340 / BMP390 Real-Time Telemetry", fontsize=14, fontweight="bold")
 
-        # Initial Plot Layout Setup (labels always visible!)
+        # Initial Plot Layout Setup 
         self._init_axes()
 
         # Start a dedicated background thread to read from stdin/serial
