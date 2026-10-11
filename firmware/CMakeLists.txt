@@ -13,4 +13,5 @@ target_sources(app PRIVATE
     src/bmp390_bridge.c
     src/bmp3_api/bmp3.c
     src/bmp390_emul.c
+    src/dsp_filter.c
 )

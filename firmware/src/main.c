@@ -1,8 +1,8 @@
 #include <zephyr/kernel.h>
 #include <zephyr/sys/printk.h>
 #include <zephyr/drivers/i2c.h>
-#include <math.h>
 #include "bmp390_bridge.h"
+#include "dsp_filter.h"
 
 /* ====================================================================
  * Devicetree & Bosch BMP3 Device Handle
@@ -90,13 +90,6 @@ K_THREAD_DEFINE(sensor_tid, SENSOR_THREAD_STACK_SIZE,
 #define PROCESS_THREAD_STACK_SIZE 1024
 #define PROCESS_THREAD_PRIORITY   6
 
-/* Barometric formula: calculates altitude above sea-level */
-static inline float calculate_altitude(float pressure_pa)
-{
-    const float sea_level_pa = 101325.0f;
-    return 44330.0f * (1.0f - powf(pressure_pa / sea_level_pa, 0.1903f));
-}
-
 void process_thread_entry(void *arg1, void *arg2, void *arg3)
 {
     ARG_UNUSED(arg1);
@@ -106,26 +99,22 @@ void process_thread_entry(void *arg1, void *arg2, void *arg3)
     printk("[Process Thread] Started\n");
 
     struct raw_sensor_data raw;
-    float filtered_pressure = 101325.0f;
-    bool first_sample = true;
+    struct dsp_iir_filter pressure_filter;
+
+    /* Initialize 1st-order IIR low-pass filter (alpha = 0.15) */
+    dsp_iir_init(&pressure_filter, DSP_DEFAULT_IIR_ALPHA);
 
     while (1) {
         /* Block until a new raw sample arrives */
         k_msgq_get(&raw_data_msgq, &raw, K_FOREVER);
 
-        if (first_sample) {
-            filtered_pressure = raw.raw_pressure_pa;
-            first_sample = false;
-        } else {
-            /* 1st-order IIR low-pass filter: y[n] = 0.85*y[n-1] + 0.15*x[n] */
-            filtered_pressure = (0.85f * filtered_pressure) + (0.15f * raw.raw_pressure_pa);
-        }
+        float filtered_pressure = dsp_iir_update(&pressure_filter, raw.raw_pressure_pa);
 
         struct telemetry_data telem = {
             .timestamp_ms = raw.timestamp_ms,
             .pressure_pa  = filtered_pressure,
             .temp_c       = raw.raw_temp_c,
-            .altitude_m   = calculate_altitude(filtered_pressure)
+            .altitude_m   = dsp_calculate_altitude(filtered_pressure)
         };
 
         /* Send to Queue 2 for UART transmission */
