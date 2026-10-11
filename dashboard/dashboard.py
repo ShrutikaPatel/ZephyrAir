@@ -5,6 +5,8 @@ Real-time visualization of barometric pressure, temperature, and altitude.
 """
 
 import sys
+import os
+import signal
 import time
 import re
 import csv
@@ -133,11 +135,23 @@ class TelemetryDashboard:
 
         plt.tight_layout()
 
+    def shutdown(self, *_args):
+        if self.running:
+            self.running = False
+            try:
+                self.csv_file.flush()
+                self.csv_file.close()
+            except Exception:
+                pass
+            print("\n[*] Dashboard stopped cleanly.")
+        os._exit(0)
+
     def run(self):
+        signal.signal(signal.SIGINT, self.shutdown)
+        self.fig.canvas.mpl_connect("close_event", self.shutdown)
         self.ani = animation.FuncAnimation(self.fig, self.update, interval=100, cache_frame_data=False)
         plt.show()
-        self.running = False
-        self.csv_file.close()
+        self.shutdown()
 
 
 def main():

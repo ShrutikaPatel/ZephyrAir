@@ -1,11 +1,15 @@
 #include <zephyr/kernel.h>
 #include <zephyr/sys/printk.h>
-#include <math.h>
 #include <zephyr/drivers/i2c.h>
+#include <math.h>
+#include "bmp390_bridge.h"
 
-/* Get Devicetree specification for BMP390 */
+/* ====================================================================
+ * Devicetree & Bosch BMP3 Device Handle
+ * ==================================================================== */
 #define BMP390_NODE DT_NODELABEL(bmp390)
-static const struct i2c_dt_spec bmp390_dev = I2C_DT_SPEC_GET(BMP390_NODE);
+static const struct i2c_dt_spec bmp390_i2c = I2C_DT_SPEC_GET(BMP390_NODE);
+static struct bmp3_dev bmp3_sensor;
 
 /* ====================================================================
  * Data Structures & Message Queues
@@ -33,9 +37,9 @@ K_MSGQ_DEFINE(raw_data_msgq, sizeof(struct raw_sensor_data), 10, 4);
 K_MSGQ_DEFINE(telemetry_msgq, sizeof(struct telemetry_data), 10, 4);
 
 /* ====================================================================
- * Thread 1: Sensor Acquisition Thread (Priority: 5) ::: Priorities 1 to 4 left as headroom for future threads
+ * Thread 1: Sensor Acquisition Thread (Priority: 5)
  * ==================================================================== */
-#define SENSOR_THREAD_STACK_SIZE 1024
+#define SENSOR_THREAD_STACK_SIZE 2048
 #define SENSOR_THREAD_PRIORITY   5
 
 void sensor_thread_entry(void *arg1, void *arg2, void *arg3)
@@ -46,49 +50,30 @@ void sensor_thread_entry(void *arg1, void *arg2, void *arg3)
 
     printk("[Sensor Thread] Started\n");
 
-     /* =================================================================
-     * I2C Hardware Handshake with Bosch BMP390
-     * ================================================================= */
-    printk("[Sensor Thread] Checking I2C bus for BMP390...\n");
-    if (!i2c_is_ready_dt(&bmp390_dev)) {
-        printk("[Sensor Thread] ERROR: I2C bus controller not ready!\n");
-        return;
-    }
-    uint8_t chip_id_reg = 0x00; // BMP390 CHIP_ID register address
-    uint8_t chip_id_val = 0;    // Buffer to hold response
-    /* Perform the 2-step I2C read dance */
-    int ret = i2c_write_read_dt(&bmp390_dev, &chip_id_reg, 1, &chip_id_val, 1);
+    /*
+     * Milestone M6: Initialize Bosch BMP390 via Official Bosch API Bridge
+     */
+    int ret = bmp390_bridge_init(&bmp3_sensor, &bmp390_i2c);
     if (ret != 0) {
-        printk("[Sensor Thread] ERROR: I2C read failed with code %d\n", ret);
-        return;
-    }
-    if (chip_id_val == 0x60) {
-        printk("\n**************************************************************\n");
-        printk(">>> [BMP390] HANDSHAKE SUCCESS!                               <<<\n");
-        printk(">>> Found Bosch BMP390 at I2C 0x%02X | Chip ID verified: 0x%02X <<<\n",
-               bmp390_dev.addr, chip_id_val);
-        printk("**************************************************************\n\n");
-    } else {
-        printk("[Sensor Thread] ERROR: Unexpected Chip ID 0x%02X (Expected 0x60)\n", chip_id_val);
+        printk("[Sensor Thread] FATAL: Could not initialize BMP390 (%d)\n", ret);
         return;
     }
 
-    uint32_t sample_idx = 0;
+    printk("[Sensor Thread] Entering 10 Hz Bosch API acquisition loop...\n");
 
     while (1) {
         struct raw_sensor_data raw;
         raw.timestamp_ms = k_uptime_get_32();
 
-        /* For now, simulating a slow barometric drift + noise. */
-        raw.raw_pressure_pa = 101325.0f + 100.0f * sinf(sample_idx * 0.05f);
-        raw.raw_temp_c      = 23.5f + 1.2f * cosf(sample_idx * 0.02f);
-
-        /* Send to Queue 1 */
-        if (k_msgq_put(&raw_data_msgq, &raw, K_NO_WAIT) != 0) {
-            printk("[Sensor Thread] Warning: raw_data_msgq full!\n");
+        /* Fetch compensated pressure (Pa) and temperature (°C) via Bosch API */
+        ret = bmp390_bridge_sample_fetch(&bmp3_sensor,
+                                         &raw.raw_pressure_pa,
+                                         &raw.raw_temp_c);
+        if (ret == 0) {
+            k_msgq_put(&raw_data_msgq, &raw, K_NO_WAIT);
+        } else {
+            printk("[Sensor Thread] Warning: sample fetch failed (%d)\n", ret);
         }
-
-        sample_idx++;
 
         /* 10 Hz sampling rate (100 ms sleep) */
         k_msleep(100);
@@ -122,13 +107,19 @@ void process_thread_entry(void *arg1, void *arg2, void *arg3)
 
     struct raw_sensor_data raw;
     float filtered_pressure = 101325.0f;
+    bool first_sample = true;
 
     while (1) {
         /* Block until a new raw sample arrives */
         k_msgq_get(&raw_data_msgq, &raw, K_FOREVER);
 
-        /* Simple 1st-order IIR low-pass filter: y[n] = 0.85*y[n-1] + 0.15*x[n] */
-        filtered_pressure = (0.85f * filtered_pressure) + (0.15f * raw.raw_pressure_pa);
+        if (first_sample) {
+            filtered_pressure = raw.raw_pressure_pa;
+            first_sample = false;
+        } else {
+            /* 1st-order IIR low-pass filter: y[n] = 0.85*y[n-1] + 0.15*x[n] */
+            filtered_pressure = (0.85f * filtered_pressure) + (0.15f * raw.raw_pressure_pa);
+        }
 
         struct telemetry_data telem = {
             .timestamp_ms = raw.timestamp_ms,
@@ -166,11 +157,12 @@ void uart_thread_entry(void *arg1, void *arg2, void *arg3)
         /* Block until processed telemetry data is available */
         k_msgq_get(&telemetry_msgq, &telem, K_FOREVER);
 
-        /* P:<pressure>,T:<temp>,A:<altitude> */
+        /* Output matching our roadmap's exact UART protocol:
+         * P:<pressure>,T:<temp>,A:<altitude> */
         printk("P:%.2f,T:%.2f,A:%.2f\n",
-               telem.pressure_pa,
-               telem.temp_c,
-               telem.altitude_m);
+               (double)telem.pressure_pa,
+               (double)telem.temp_c,
+               (double)telem.altitude_m);
     }
 }
 
